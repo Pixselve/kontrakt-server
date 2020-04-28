@@ -1,0 +1,28 @@
+import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import { SkillToStudentCreateWithoutStudentInput } from "../inputs/SkillToStudentCreateWithoutStudentInput";
+import { SkillToStudentUpdateWithoutStudentDataInput } from "../inputs/SkillToStudentUpdateWithoutStudentDataInput";
+import { SkillToStudentWhereUniqueInput } from "../inputs/SkillToStudentWhereUniqueInput";
+
+@InputType({
+  isAbstract: true,
+  description: undefined,
+})
+export class SkillToStudentUpsertWithWhereUniqueWithoutStudentInput {
+  @Field(_type => SkillToStudentWhereUniqueInput, {
+    nullable: false,
+    description: undefined
+  })
+  where!: SkillToStudentWhereUniqueInput;
+
+  @Field(_type => SkillToStudentUpdateWithoutStudentDataInput, {
+    nullable: false,
+    description: undefined
+  })
+  update!: SkillToStudentUpdateWithoutStudentDataInput;
+
+  @Field(_type => SkillToStudentCreateWithoutStudentInput, {
+    nullable: false,
+    description: undefined
+  })
+  create!: SkillToStudentCreateWithoutStudentInput;
+}

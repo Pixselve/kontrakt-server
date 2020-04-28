@@ -1,0 +1,39 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateEnum",
+      "enum": "Mark",
+      "createdValues": [
+        "BLUE",
+        "TODO",
+        "TO_FINISH"
+      ]
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "SkillToStudent",
+          "field": "mark"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "SkillToStudent",
+          "field": "mark"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "TODO"
+    }
+  ]
+}

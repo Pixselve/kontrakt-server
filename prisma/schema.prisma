@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator typegraphql {
+  provider = "node_modules/typegraphql-prisma/generator.js"
+  output   = "../src/generated/type-graphql"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contract {
+  date DateTime
+  id   Int      @default(autoincrement()) @id
+  skills Skill[]
+}
+
+model SkillToStudent {
+  id        Int                       @default(autoincrement()) @id
+  mark      Mark @default(TODO)
+  skillId   Int
+  studentId Int
+  skill    Skill                   @relation(fields: [skillId], references: [id])
+  student  Student                 @relation(fields: [studentId], references: [id])
+}
+
+model Skill {
+  id              Int               @default(autoincrement()) @id
+  name            String
+  skillToStudents SkillToStudent[]
+  contract Contract @relation(fields: [contractId], references: [id])
+  contractId Int
+}
+
+model Student {
+  firstName       String
+  id              Int               @default(autoincrement()) @id
+  lastName        String
+  skillToStudents SkillToStudent[]
+}
+
+model Teacher {
+  email    String @id
+  password String
+}
+
+enum Mark {
+  AWAITING_CORRECTION
+  GREEN
+  MARKED
+  ORANGE
+  RED
+  BLUE
+  TODO
+  TO_FINISH
+}
