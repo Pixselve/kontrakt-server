@@ -9,7 +9,9 @@
     "build": "npm run generate && tsc",
     "generate": "npx prisma generate",
     "postinstall": "npm run generate",
-    "introspect": "npx prisma introspect"
+    "introspect": "npx prisma introspect",
+    "test-worksheet": "ts-node src/worksheet.ts",
+    "upload-to-google-cloud": "gcloud builds submit --config ./cloud-build.yml"
   },
   "dependencies": {
     "graphql": "^14.6.0",
@@ -21,7 +23,8 @@
     "type-graphql": "^0.17.6",
     "express-jwt": "^5.3.3",
     "express": "^4.17.1",
-    "apollo-server-express": "^2.12.0"
+    "apollo-server-express": "^2.12.0",
+    "exceljs": "^3.9.0"
   },
   "devDependencies": {
     "@prisma/cli": "^2.0.0-beta.2",

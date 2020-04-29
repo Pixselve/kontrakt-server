@@ -15,7 +15,6 @@ export class CreateOneContract {
     const alreadyExistsContract = await prisma.contract.findMany({ where: { date: dateWithoutHour } });
     if (alreadyExistsContract.length > 0) throw new Error("ContractWithDateAlreadyExists");
 
-
     return prisma.contract.create({
       data: {
         date: dateWithoutHour,
@@ -28,3 +27,4 @@ export class CreateOneContract {
 
   }
 }
+

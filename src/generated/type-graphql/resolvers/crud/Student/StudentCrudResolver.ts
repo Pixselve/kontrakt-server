@@ -1,32 +1,14 @@
-import {
-  Arg,
-  Args,
-  ArgsType,
-  Ctx,
-  Field,
-  FieldResolver,
-  Float,
-  ID,
-  InputType,
-  Int,
-  Mutation,
-  ObjectType,
-  Query,
-  Resolver,
-  Root,
-  registerEnumType,
-  Authorized
-}                                from "type-graphql";
-import { CreateOneStudentArgs }  from "./args/CreateOneStudentArgs";
+import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import { CreateOneStudentArgs } from "./args/CreateOneStudentArgs";
 import { DeleteManyStudentArgs } from "./args/DeleteManyStudentArgs";
-import { DeleteOneStudentArgs }  from "./args/DeleteOneStudentArgs";
-import { FindManyStudentArgs }   from "./args/FindManyStudentArgs";
-import { FindOneStudentArgs }    from "./args/FindOneStudentArgs";
+import { DeleteOneStudentArgs } from "./args/DeleteOneStudentArgs";
+import { FindManyStudentArgs } from "./args/FindManyStudentArgs";
+import { FindOneStudentArgs } from "./args/FindOneStudentArgs";
 import { UpdateManyStudentArgs } from "./args/UpdateManyStudentArgs";
-import { UpdateOneStudentArgs }  from "./args/UpdateOneStudentArgs";
-import { UpsertOneStudentArgs }  from "./args/UpsertOneStudentArgs";
-import { Student }               from "../../../models/Student";
-import { BatchPayload }          from "../../outputs/BatchPayload";
+import { UpdateOneStudentArgs } from "./args/UpdateOneStudentArgs";
+import { UpsertOneStudentArgs } from "./args/UpsertOneStudentArgs";
+import { Student } from "../../../models/Student";
+import { BatchPayload } from "../../outputs/BatchPayload";
 
 @Resolver(_of => Student)
 export class StudentCrudResolver {
@@ -46,7 +28,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.findMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Student, {
     nullable: false,
     description: undefined
@@ -55,7 +36,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.create(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Student, {
     nullable: true,
     description: undefined
@@ -64,7 +44,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.delete(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Student, {
     nullable: true,
     description: undefined
@@ -73,7 +52,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.update(args);
   }
 
-  @Authorized()
   @Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
@@ -82,7 +60,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.deleteMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
@@ -91,7 +68,6 @@ export class StudentCrudResolver {
     return ctx.prisma.student.updateMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Student, {
     nullable: false,
     description: undefined

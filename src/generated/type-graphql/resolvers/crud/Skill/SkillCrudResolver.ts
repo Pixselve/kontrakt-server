@@ -1,32 +1,14 @@
-import {
-  Arg,
-  Args,
-  ArgsType,
-  Ctx,
-  Field,
-  FieldResolver,
-  Float,
-  ID,
-  InputType,
-  Int,
-  Mutation,
-  ObjectType,
-  Query,
-  Resolver,
-  Root,
-  registerEnumType,
-  Authorized
-}                              from "type-graphql";
-import { CreateOneSkillArgs }  from "./args/CreateOneSkillArgs";
+import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import { CreateOneSkillArgs } from "./args/CreateOneSkillArgs";
 import { DeleteManySkillArgs } from "./args/DeleteManySkillArgs";
-import { DeleteOneSkillArgs }  from "./args/DeleteOneSkillArgs";
-import { FindManySkillArgs }   from "./args/FindManySkillArgs";
-import { FindOneSkillArgs }    from "./args/FindOneSkillArgs";
+import { DeleteOneSkillArgs } from "./args/DeleteOneSkillArgs";
+import { FindManySkillArgs } from "./args/FindManySkillArgs";
+import { FindOneSkillArgs } from "./args/FindOneSkillArgs";
 import { UpdateManySkillArgs } from "./args/UpdateManySkillArgs";
-import { UpdateOneSkillArgs }  from "./args/UpdateOneSkillArgs";
-import { UpsertOneSkillArgs }  from "./args/UpsertOneSkillArgs";
-import { Skill }               from "../../../models/Skill";
-import { BatchPayload }        from "../../outputs/BatchPayload";
+import { UpdateOneSkillArgs } from "./args/UpdateOneSkillArgs";
+import { UpsertOneSkillArgs } from "./args/UpsertOneSkillArgs";
+import { Skill } from "../../../models/Skill";
+import { BatchPayload } from "../../outputs/BatchPayload";
 
 @Resolver(_of => Skill)
 export class SkillCrudResolver {
@@ -46,7 +28,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.findMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Skill, {
     nullable: false,
     description: undefined
@@ -55,7 +36,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.create(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Skill, {
     nullable: true,
     description: undefined
@@ -64,7 +44,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.delete(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Skill, {
     nullable: true,
     description: undefined
@@ -73,7 +52,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.update(args);
   }
 
-  @Authorized()
   @Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
@@ -82,7 +60,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.deleteMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
@@ -91,7 +68,6 @@ export class SkillCrudResolver {
     return ctx.prisma.skill.updateMany(args);
   }
 
-  @Authorized()
   @Mutation(_returns => Skill, {
     nullable: false,
     description: undefined

@@ -8,11 +8,6 @@ import express from "express";
 import jwt     from "express-jwt";
 
 
-import {
-  StudentCrudResolver,
-  ContractCrudResolver,
-  SkillCrudResolver
-}                                     from "./generated/type-graphql";
 import { CreateOneTeacher }           from "./resolvers/crud/CreateOneTeacher";
 import { LoginTeacher }               from "./resolvers/crud/LoginTeacher";
 import { CheckIsStudentExists }       from "./resolvers/crud/CheckIsStudentExists";
@@ -21,6 +16,10 @@ import { RemoveOneContract }          from "./resolvers/crud/RemoveOneContract";
 import { DeleteStudent }              from "./resolvers/crud/DeleteStudent";
 import { EditOrCreateSkillToStudent } from "./resolvers/crud/EditOrCreateSkillToStudent";
 import { customAuthChecker }          from "./authChecker";
+import { ContractsToExcel }           from "./resolvers/crud/ContractsToExcel";
+import { StudentCrudResolver }        from "./resolvers/crud/StudentCrudResolver";
+import { ContractCrudResolver }       from "./resolvers/crud/ContractCrudResolver";
+import { SkillCrudResolver }          from "./resolvers/crud/SkillCrudResolver";
 
 export interface Context {
   prisma: PrismaClient;
@@ -36,7 +35,7 @@ const app = express();
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent],
+    resolvers: [StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent, ContractsToExcel],
     validate: false,
     authChecker: customAuthChecker
   });
@@ -44,7 +43,8 @@ async function main() {
 
   const server = new ApolloServer({
     schema,
-    playground: true,
+    playground: process.env.NODE_ENV === "dev",
+    introspection: process.env.NODE_ENV === "dev",
     // @ts-ignore
     context: ({ req }): Context => ({ prisma, user: req.user }),
   });
