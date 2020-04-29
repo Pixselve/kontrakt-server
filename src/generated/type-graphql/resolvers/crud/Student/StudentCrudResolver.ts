@@ -1,4 +1,4 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { CreateOneStudentArgs } from "./args/CreateOneStudentArgs";
 import { DeleteManyStudentArgs } from "./args/DeleteManyStudentArgs";
 import { DeleteOneStudentArgs } from "./args/DeleteOneStudentArgs";
@@ -8,71 +8,80 @@ import { UpdateManyStudentArgs } from "./args/UpdateManyStudentArgs";
 import { UpdateOneStudentArgs } from "./args/UpdateOneStudentArgs";
 import { UpsertOneStudentArgs } from "./args/UpsertOneStudentArgs";
 import { Student } from "../../../models/Student";
+import { AggregateStudent } from "../../outputs/AggregateStudent";
 import { BatchPayload } from "../../outputs/BatchPayload";
 
-@Resolver(_of => Student)
+@TypeGraphQL.Resolver(_of => Student)
 export class StudentCrudResolver {
-  @Query(_returns => Student, {
+  @TypeGraphQL.Query(_returns => Student, {
     nullable: true,
     description: undefined
   })
-  async student(@Ctx() ctx: any, @Args() args: FindOneStudentArgs): Promise<Student | null> {
+  async student(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: FindOneStudentArgs): Promise<Student | null> {
     return ctx.prisma.student.findOne(args);
   }
 
-  @Query(_returns => [Student], {
+  @TypeGraphQL.Query(_returns => [Student], {
     nullable: false,
     description: undefined
   })
-  async students(@Ctx() ctx: any, @Args() args: FindManyStudentArgs): Promise<Student[]> {
+  async students(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: FindManyStudentArgs): Promise<Student[]> {
     return ctx.prisma.student.findMany(args);
   }
 
-  @Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation(_returns => Student, {
     nullable: false,
     description: undefined
   })
-  async createOneStudent(@Ctx() ctx: any, @Args() args: CreateOneStudentArgs): Promise<Student> {
+  async createOneStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: CreateOneStudentArgs): Promise<Student> {
     return ctx.prisma.student.create(args);
   }
 
-  @Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation(_returns => Student, {
     nullable: true,
     description: undefined
   })
-  async deleteOneStudent(@Ctx() ctx: any, @Args() args: DeleteOneStudentArgs): Promise<Student | null> {
+  async deleteOneStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: DeleteOneStudentArgs): Promise<Student | null> {
     return ctx.prisma.student.delete(args);
   }
 
-  @Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation(_returns => Student, {
     nullable: true,
     description: undefined
   })
-  async updateOneStudent(@Ctx() ctx: any, @Args() args: UpdateOneStudentArgs): Promise<Student | null> {
+  async updateOneStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UpdateOneStudentArgs): Promise<Student | null> {
     return ctx.prisma.student.update(args);
   }
 
-  @Mutation(_returns => BatchPayload, {
+  @TypeGraphQL.Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
   })
-  async deleteManyStudent(@Ctx() ctx: any, @Args() args: DeleteManyStudentArgs): Promise<BatchPayload> {
+  async deleteManyStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: DeleteManyStudentArgs): Promise<BatchPayload> {
     return ctx.prisma.student.deleteMany(args);
   }
 
-  @Mutation(_returns => BatchPayload, {
+  @TypeGraphQL.Mutation(_returns => BatchPayload, {
     nullable: false,
     description: undefined
   })
-  async updateManyStudent(@Ctx() ctx: any, @Args() args: UpdateManyStudentArgs): Promise<BatchPayload> {
+  async updateManyStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UpdateManyStudentArgs): Promise<BatchPayload> {
     return ctx.prisma.student.updateMany(args);
   }
 
-  @Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation(_returns => Student, {
     nullable: false,
     description: undefined
   })
-  async upsertOneStudent(@Ctx() ctx: any, @Args() args: UpsertOneStudentArgs): Promise<Student> {
+  async upsertOneStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UpsertOneStudentArgs): Promise<Student> {
     return ctx.prisma.student.upsert(args);
+  }
+
+  @TypeGraphQL.Query(_returns => AggregateStudent, {
+    nullable: false,
+    description: undefined
+  })
+  async aggregateStudent(): Promise<AggregateStudent> {
+    return new AggregateStudent();
   }
 }

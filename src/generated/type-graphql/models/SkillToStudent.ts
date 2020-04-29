@@ -1,32 +1,32 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { Skill } from "../models/Skill";
 import { Student } from "../models/Student";
 import { Mark } from "../enums/Mark";
 
-@ObjectType({
+@TypeGraphQL.ObjectType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillToStudent {
-  @Field(_type => Int, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false,
     description: undefined,
   })
   id!: number;
 
-  @Field(_type => Mark, {
+  @TypeGraphQL.Field(_type => Mark, {
     nullable: false,
     description: undefined,
   })
   mark!: keyof typeof Mark;
 
-  @Field(_type => Int, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false,
     description: undefined,
   })
   skillId!: number;
 
-  @Field(_type => Int, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false,
     description: undefined,
   })

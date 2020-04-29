@@ -1,8 +1,8 @@
 import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Context }                                         from "../../index";
-import { CreateOneContractInput }                   from "../inputs/CreateOneContractInput";
-import { Contract }                                 from "../../generated/type-graphql/models";
-import { Workbook }                                 from "exceljs";
+import { CreateOneContractInput }                          from "../inputs/CreateOneContractInput";
+import { Contract }                                        from "../../generated/type-graphql/models";
+import { Workbook }                                        from "exceljs";
 
 @Resolver()
 export class ContractsToExcel {
@@ -18,9 +18,6 @@ export class ContractsToExcel {
             skillToStudents: true
           }
         }
-      },
-      orderBy: {
-        date: "desc"
       }
     });
 
@@ -38,9 +35,6 @@ export class ContractsToExcel {
     const skills = await prisma.skill.findMany({
       include: {
         contract: true
-      },
-      orderBy: {
-        contract: "desc"
       }
     });
 

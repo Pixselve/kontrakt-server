@@ -1,20 +1,17 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { Skill } from "../models/Skill";
 
-@ObjectType({
+@TypeGraphQL.ObjectType({
   isAbstract: true,
-  description: undefined,
 })
 export class Contract {
-  @Field(_type => Date, {
+  @TypeGraphQL.Field(_type => Date, {
     nullable: false,
-    description: undefined,
   })
   date!: Date;
 
-  @Field(_type => Int, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false,
-    description: undefined,
   })
   id!: number;
 

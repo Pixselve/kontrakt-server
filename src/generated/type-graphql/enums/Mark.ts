@@ -1,4 +1,4 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 
 export enum Mark {
   AWAITING_CORRECTION = "AWAITING_CORRECTION",
@@ -10,7 +10,7 @@ export enum Mark {
   TODO = "TODO",
   TO_FINISH = "TO_FINISH"
 }
-registerEnumType(Mark, {
+TypeGraphQL.registerEnumType(Mark, {
   name: "Mark",
   description: undefined,
 });

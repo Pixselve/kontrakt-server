@@ -1,8 +1,8 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { TeacherWhereInput } from "../../../inputs/TeacherWhereInput";
 
-@ArgsType()
+@TypeGraphQL.ArgsType()
 export class DeleteManyTeacherArgs {
-  @Field(_type => TeacherWhereInput, { nullable: true })
+  @TypeGraphQL.Field(_type => TeacherWhereInput, { nullable: true })
   where?: TeacherWhereInput | null;
 }

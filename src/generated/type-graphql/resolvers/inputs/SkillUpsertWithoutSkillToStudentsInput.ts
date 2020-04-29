@@ -1,19 +1,19 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { SkillCreateWithoutSkillToStudentsInput } from "../inputs/SkillCreateWithoutSkillToStudentsInput";
 import { SkillUpdateWithoutSkillToStudentsDataInput } from "../inputs/SkillUpdateWithoutSkillToStudentsDataInput";
 
-@InputType({
+@TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillUpsertWithoutSkillToStudentsInput {
-  @Field(_type => SkillUpdateWithoutSkillToStudentsDataInput, {
+  @TypeGraphQL.Field(_type => SkillUpdateWithoutSkillToStudentsDataInput, {
     nullable: false,
     description: undefined
   })
   update!: SkillUpdateWithoutSkillToStudentsDataInput;
 
-  @Field(_type => SkillCreateWithoutSkillToStudentsInput, {
+  @TypeGraphQL.Field(_type => SkillCreateWithoutSkillToStudentsInput, {
     nullable: false,
     description: undefined
   })

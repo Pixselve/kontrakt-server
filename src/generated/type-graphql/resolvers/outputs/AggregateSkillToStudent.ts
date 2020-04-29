@@ -1,13 +1,16 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
+import { AggregateSkillToStudentCountArgs } from "./args/AggregateSkillToStudentCountArgs";
 
-@ObjectType({
+@TypeGraphQL.ObjectType({
   isAbstract: true,
   description: undefined,
 })
 export class AggregateSkillToStudent {
-  @Field(_type => Int, {
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: false,
     description: undefined
   })
-  count!: number;
+  count(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: AggregateSkillToStudentCountArgs) {
+    return ctx.prisma.skillToStudent.count(args);
+  }
 }

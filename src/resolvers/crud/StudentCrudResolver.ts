@@ -15,20 +15,22 @@ import {
   Resolver,
   Root,
   registerEnumType, Authorized
-}                  from "type-graphql";
-import { Student } from "../../generated/type-graphql/models";
+}                       from "type-graphql";
+import { Student }      from "../../generated/type-graphql/models";
 import {
   CreateOneStudentArgs, DeleteOneStudentArgs,
   FindManyStudentArgs,
   FindOneStudentArgs, UpdateOneStudentArgs
-}                  from "../../generated/type-graphql/resolvers/crud/Student/args";
+}                       from "../../generated/type-graphql/resolvers/crud/Student/args";
+import * as TypeGraphQL from "type-graphql";
 
 @Resolver(_of => Student)
 export class StudentCrudResolver {
-  @Query(_returns => Student, {
+  @TypeGraphQL.Query(_returns => Student, {
     nullable: true,
+    description: undefined
   })
-  async student(@Ctx() ctx: any, @Args() args: FindOneStudentArgs): Promise<Student | null> {
+  async student(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: FindOneStudentArgs): Promise<Student | null> {
     return ctx.prisma.student.findOne(args);
   }
 
@@ -45,14 +47,6 @@ export class StudentCrudResolver {
   })
   async createOneStudent(@Ctx() ctx: any, @Args() args: CreateOneStudentArgs): Promise<Student> {
     return ctx.prisma.student.create(args);
-  }
-
-  @Authorized("TEACHER")
-  @Mutation(_returns => Student, {
-    nullable: true,
-  })
-  async deleteOneStudent(@Ctx() ctx: any, @Args() args: DeleteOneStudentArgs): Promise<Student | null> {
-    return ctx.prisma.student.delete(args);
   }
 
   @Authorized("TEACHER")

@@ -17,9 +17,15 @@ import { DeleteStudent }              from "./resolvers/crud/DeleteStudent";
 import { EditOrCreateSkillToStudent } from "./resolvers/crud/EditOrCreateSkillToStudent";
 import { customAuthChecker }          from "./authChecker";
 import { ContractsToExcel }           from "./resolvers/crud/ContractsToExcel";
-import { StudentCrudResolver }        from "./resolvers/crud/StudentCrudResolver";
-import { ContractCrudResolver }       from "./resolvers/crud/ContractCrudResolver";
-import { SkillCrudResolver }          from "./resolvers/crud/SkillCrudResolver";
+
+import { ContractCrudResolver } from "./resolvers/crud/ContractCrudResolver";
+import { SkillCrudResolver }    from "./resolvers/crud/SkillCrudResolver";
+import {
+  ContractRelationsResolver,
+  SkillRelationsResolver,
+  StudentRelationsResolver
+}                               from "./generated/type-graphql/resolvers/relations";
+import { StudentCrudResolver }  from "./resolvers/crud/StudentCrudResolver";
 
 export interface Context {
   prisma: PrismaClient;
@@ -35,7 +41,7 @@ const app = express();
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent, ContractsToExcel],
+    resolvers: [StudentRelationsResolver, ContractRelationsResolver, SkillRelationsResolver, StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent, ContractsToExcel],
     validate: false,
     authChecker: customAuthChecker
   });

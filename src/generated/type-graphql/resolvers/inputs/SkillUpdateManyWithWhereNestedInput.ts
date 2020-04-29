@@ -1,19 +1,19 @@
-import { Arg, Args, ArgsType, Ctx, Field, FieldResolver, Float, ID, InputType, Int, Mutation, ObjectType, Query, Resolver, Root, registerEnumType } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { SkillScalarWhereInput } from "../inputs/SkillScalarWhereInput";
 import { SkillUpdateManyDataInput } from "../inputs/SkillUpdateManyDataInput";
 
-@InputType({
+@TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillUpdateManyWithWhereNestedInput {
-  @Field(_type => SkillScalarWhereInput, {
+  @TypeGraphQL.Field(_type => SkillScalarWhereInput, {
     nullable: false,
     description: undefined
   })
   where!: SkillScalarWhereInput;
 
-  @Field(_type => SkillUpdateManyDataInput, {
+  @TypeGraphQL.Field(_type => SkillUpdateManyDataInput, {
     nullable: false,
     description: undefined
   })
