@@ -1,0 +1,28 @@
+import * as TypeGraphQL             from "type-graphql";
+import { ContractOrderByInput }     from "../../../inputs";
+import { ContractWhereInput }       from "../../../inputs";
+import { ContractWhereUniqueInput } from "../../../inputs";
+
+@TypeGraphQL.ArgsType()
+export class FindManyContractArgs {
+  @TypeGraphQL.Field(_type => ContractWhereInput, { nullable: true })
+  where?: ContractWhereInput | null;
+
+  @TypeGraphQL.Field(_type => ContractOrderByInput, { nullable: true })
+  orderBy?: ContractOrderByInput | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  skip?: number | null;
+
+  @TypeGraphQL.Field(_type => ContractWhereUniqueInput, { nullable: true })
+  after?: ContractWhereUniqueInput | null;
+
+  @TypeGraphQL.Field(_type => ContractWhereUniqueInput, { nullable: true })
+  before?: ContractWhereUniqueInput | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  first?: number | null;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  last?: number | null;
+}

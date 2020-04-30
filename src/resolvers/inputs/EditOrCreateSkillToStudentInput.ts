@@ -1,13 +1,8 @@
-import {
-  Field,
-  InputType,
-}                                   from "type-graphql";
-import { IsAlpha, Length, IsEmail } from "class-validator";
-import {
-  SkillToStudentWhereUniqueInput, SkillWhereUniqueInput,
-  StudentWhereUniqueInput
-}                                   from "../../generated/type-graphql/resolvers/inputs";
-import { Mark }                     from "../../generated/type-graphql/enums";
+import { Field, InputType, }       from "type-graphql";
+import { Mark }                    from "../enums";
+import { StudentWhereUniqueInput } from "./StudentWhereUniqueInput";
+import { SkillWhereUniqueInput }   from "./SkillWhereUniqueInput";
+
 
 @InputType({})
 export class EditOrCreateSkillToStudentInput {

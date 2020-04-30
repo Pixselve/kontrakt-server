@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "type-graphql";
-import { Teacher }  from "../../generated/type-graphql/models";
+import { Teacher }           from "./Teacher";
 
 @ObjectType()
 export class AuthPayload {
