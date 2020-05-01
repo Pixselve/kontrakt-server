@@ -10,11 +10,11 @@
     "generate": "npx prisma generate",
     "postinstall": "npm run generate",
     "introspect": "npx prisma introspect",
-    "test-worksheet": "ts-node src/worksheet.ts",
+    "test-worksheet": "ts-node prototype/spreadsheet.ts",
     "upload-to-google-cloud": "gcloud builds submit --config ./cloud-build.yml"
   },
   "dependencies": {
-    "@prisma/client": "^2.0.0-beta.3",
+    "@prisma/client": "^2.0.0-beta.4",
     "apollo-server": "^2.11.0",
     "apollo-server-express": "^2.12.0",
     "bcryptjs": "^2.4.3",
@@ -24,10 +24,11 @@
     "graphql": "^14.6.0",
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
-    "type-graphql": "^0.17.6"
+    "type-graphql": "^0.17.6",
+    "chroma-js": "^2.1.0"
   },
   "devDependencies": {
-    "@prisma/cli": "^2.0.0-beta.3",
+    "@prisma/cli": "^2.0.0-beta.4",
     "@types/bcryptjs": "^2.4.2",
     "@types/express": "^4.17.6",
     "@types/express-jwt": "^0.0.42",
@@ -36,7 +37,8 @@
     "ts-node": "^8.9.1",
     "ts-node-dev": "^1.0.0-pre.44",
     "typegraphql-prisma": "^0.2.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "@types/chroma-js": "^2.0.0"
   },
   "keywords": [],
   "author": "",

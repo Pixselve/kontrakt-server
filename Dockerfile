@@ -1,7 +1,5 @@
 FROM node:latest
-
 ENV DATABASE_URL "postgresql://postgres:bC8rBtfyJoNCfeCE@35.205.60.245:5432/kontrakt?schema=public"
-
 RUN mkdir -p /usr/src/app
 COPY package*.json /usr/src/app/
 
