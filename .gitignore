@@ -1,4 +1,6 @@
 .now
 node_modules
 prisma/.env
+prisma/migrations
+prisma/.prisma
 dist

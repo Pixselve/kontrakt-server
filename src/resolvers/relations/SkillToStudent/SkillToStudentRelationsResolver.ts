@@ -1,29 +1,21 @@
-import * as TypeGraphQL                   from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
 import { Skill, SkillToStudent, Student } from "../../models";
+import { Context } from "../../../index";
 
 @TypeGraphQL.Resolver(_of => SkillToStudent)
 export class SkillToStudentRelationsResolver {
   @TypeGraphQL.FieldResolver(_type => Skill, {
-    nullable: false,
-    description: undefined,
+    nullable: true,
   })
-  async skill(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() ctx: any): Promise<Skill> {
-    return ctx.prisma.skillToStudent.findOne({
-      where: {
-        id: skillToStudent.id,
-      },
-    }).skill({});
+  async skill(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() { prisma }: Context): Promise<Skill | null> {
+    return prisma.skill.findOne({ where: { id: skillToStudent.skillId } });
   }
 
   @TypeGraphQL.FieldResolver(_type => Student, {
-    nullable: false,
+    nullable: true,
     description: undefined,
   })
-  async student(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() ctx: any): Promise<Student> {
-    return ctx.prisma.skillToStudent.findOne({
-      where: {
-        id: skillToStudent.id,
-      },
-    }).student({});
+  async student(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() { prisma }: Context): Promise<Student | null> {
+    return prisma.student.findOne({ where: { id: skillToStudent.studentId } });
   }
 }

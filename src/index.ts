@@ -39,7 +39,6 @@ export interface Context {
 const prisma = new PrismaClient();
 const app = express();
 
-
 async function main() {
   const schema = await buildSchema({
     resolvers: [SkillStatusRelationsResolver, ColorRelationsResolver, ColorCrudResolver, SkillStatusCrudResolver, StudentRelationsResolver, ContractRelationsResolver, SkillRelationsResolver, StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent, ContractsToExcel],
@@ -66,7 +65,7 @@ async function main() {
   server.applyMiddleware({ app, path: "/" });
 
   await app.listen({ port: process.env.PORT || 4000 });
-  console.log(`🚀 Server ready at http://localhost:4000${ server.graphqlPath }`);
+  console.log(`🚀 Server ready at http://localhost:${process.env.PORT || 4000}${ server.graphqlPath }`);
 }
 
 main().catch(console.error).finally(async () => {
