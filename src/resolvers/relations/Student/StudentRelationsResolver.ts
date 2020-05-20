@@ -27,7 +27,7 @@ export class StudentRelationsResolver {
           id: student.id,
         },
       })
-      .skillToStudents(args);
+      .skillsToStudent(args);
 
     return [
       ...skillToStudent,

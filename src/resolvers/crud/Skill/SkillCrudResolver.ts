@@ -1,12 +1,13 @@
 import { Args, Authorized, Ctx, Mutation, Query, Resolver } from "type-graphql";
-import { Skill }                                            from "../../models";
+import { Skill } from "../../models";
 import {
   CreateOneSkillArgs,
   DeleteOneSkillArgs,
   FindManySkillArgs,
   FindOneSkillArgs,
   UpdateOneSkillArgs
-}                                                           from "./args";
+} from "./args";
+import { Context } from "../../../index";
 
 
 @Resolver(_of => Skill)
@@ -41,7 +42,9 @@ export class SkillCrudResolver {
     nullable: true,
     description: undefined
   })
-  async deleteOneSkill(@Ctx() ctx: any, @Args() args: DeleteOneSkillArgs): Promise<Skill | null> {
+  async deleteOneSkill(@Ctx() ctx: Context, @Args() args: DeleteOneSkillArgs): Promise<Skill | null> {
+    // Delete all the SkillToStudent associated to the skill
+    await ctx.prisma.skillToStudent.deleteMany({ where: { skill: args.where } });
     return ctx.prisma.skill.delete(args);
   }
 

@@ -16,7 +16,7 @@ export class ContractsToExcel {
       include: { skills: true },
       orderBy: { date: "desc" }
     }), prisma.student.findMany({
-      include: { skillToStudents: true },
+      include: { skillsToStudent: true },
       orderBy: { lastName: "asc" }
     }), prisma.skillStatus.findMany({ include: { color: true } })]);
 
@@ -44,7 +44,7 @@ export class ContractsToExcel {
 
       students.forEach(student => {
         const row = sheet.addRow([student.lastName, student.firstName, ...contract.skills.map(skill => {
-          const skillToStudentFound = student.skillToStudents.find(skillToStudent => skillToStudent.skillId === skill.id);
+          const skillToStudentFound = student.skillsToStudent.find(skillToStudent => skillToStudent.skillId === skill.id);
           if (skillToStudentFound) {
             return skillToStudentFound.mark;
           } else {

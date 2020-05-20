@@ -10,10 +10,4 @@ export class Teacher {
     description: undefined,
   })
   email!: string;
-
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false,
-    description: undefined,
-  })
-  password!: string;
 }

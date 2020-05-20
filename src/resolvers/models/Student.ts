@@ -1,28 +1,32 @@
-import * as TypeGraphQL from "type-graphql";
-import { SkillToStudent } from "../models/SkillToStudent";
+import { Authorized, Field, Int, ObjectType } from "type-graphql";
+import { SkillToStudent } from "./SkillToStudent";
+import { IsInt, IsNotEmpty, IsPositive, Max, Min } from "class-validator";
 
-@TypeGraphQL.ObjectType({
+@ObjectType({
   isAbstract: true,
   description: undefined,
 })
 export class Student {
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false,
-    description: undefined,
-  })
-  firstName!: string;
-
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false,
-    description: undefined,
-  })
+  @Authorized(["TEACHER", "SELF_STUDENT"])
+  @Field(returns => Int)
   id!: number;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false,
-    description: undefined,
-  })
+  @Field()
+  @IsNotEmpty()
+  firstName!: string;
+
+  @Authorized(["TEACHER", "SELF_STUDENT"])
+  @Field()
+  @IsNotEmpty()
   lastName!: string;
+
+  @Field(returns => Int)
+  @IsInt()
+  @IsPositive()
+  @Min(100000)
+  @Max(999999)
+  @Authorized(["TEACHER", "SELF_STUDENT"])
+  username!: number;
 
   skillToStudents?: SkillToStudent[] | null;
 }
