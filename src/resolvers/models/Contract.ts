@@ -1,21 +1,23 @@
 import * as TypeGraphQL from "type-graphql";
-import { Skill } from "../models/Skill";
+import { Field } from "type-graphql";
+import { Skill } from "./Skill";
 
 @TypeGraphQL.ObjectType({
   isAbstract: true,
   description: undefined,
 })
 export class Contract {
-  @TypeGraphQL.Field(_type => Date, {
-    nullable: false,
-    description: undefined,
-  })
+  @Field(_type => Date)
   date!: Date;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false,
-    description: undefined,
-  })
+  @Field(_type => Date)
+  end!: Date;
+
+  @Field()
+  name!: string;
+
+
+  @Field(_type => TypeGraphQL.Int)
   id!: number;
 
   skills?: Skill[] | null;

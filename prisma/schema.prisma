@@ -20,7 +20,9 @@ model Color {
 
 model Contract {
   date  DateTime
+  end   DateTime
   id    Int      @default(autoincrement()) @id
+  name  String
   skills Skill[]
 }
 

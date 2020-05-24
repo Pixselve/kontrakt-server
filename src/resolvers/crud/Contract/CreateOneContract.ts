@@ -1,7 +1,7 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
-import { Context }                                  from "../../../index";
-import { CreateOneContractInput }                   from "../../inputs/CreateOneContractInput";
-import { Contract }                                 from "../../models";
+import { Context } from "../../../index";
+import { CreateOneContractInput } from "../../inputs/CreateOneContractInput";
+import { Contract } from "../../models";
 
 @Resolver()
 export class CreateOneContract {
@@ -18,6 +18,8 @@ export class CreateOneContract {
     return prisma.contract.create({
       data: {
         date: dateWithoutHour,
+        end: data.end,
+        name: data.name,
         skills: {
           create: data.skills.map(skill => ({ name: skill }))
         }
