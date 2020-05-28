@@ -12,54 +12,54 @@ datasource db {
 }
 
 model Contract {
-  end   DateTime
-  id    Int      @default(autoincrement()) @id
-  name  String
-  start DateTime
-  Skill Skill[]
-  Group Group[]  @relation("GroupToContract", references: [id])
+  end    DateTime
+  id     Int      @default(autoincrement()) @id
+  name   String
+  start  DateTime
+  skills Skill[]
+  groups Group[]  @relation("GroupToContract", references: [id])
 }
 
 model Group {
-  id       Int        @default(autoincrement()) @id
-  name     String     @unique
-  Contract Contract[] @relation("GroupToContract", references: [id])
-  Student  Student[]  @relation("StudentToGroup", references: [id])
+  id        Int        @default(autoincrement()) @id
+  name      String     @unique
+  contracts Contract[] @relation("GroupToContract", references: [id])
+  students  Student[]  @relation("StudentToGroup", references: [id])
 }
 
 model Mark {
-  rgb            String
-  text           String
-  value          String           @id
-  SkillToStudent SkillToStudent[]
+  rgb              String
+  text             String
+  value            String           @id
+  skillsToStudents SkillToStudent[]
 }
 
 model Skill {
-  contractId     Int
-  id             Int              @default(autoincrement()) @id
-  name           String
-  Contract       Contract         @relation(fields: [contractId], references: [id])
-  SkillToStudent SkillToStudent[]
+  contractId      Int
+  id              Int              @default(autoincrement()) @id
+  name            String
+  contract        Contract         @relation(fields: [contractId], references: [id])
+  skillToStudents SkillToStudent[]
 }
 
 model SkillToStudent {
   markValue String
   skillId   Int
   studentId Int
-  Mark      Mark    @relation(fields: [markValue], references: [value])
-  Skill     Skill   @relation(fields: [skillId], references: [id])
-  Student   Student @relation(fields: [studentId], references: [id])
+  mark      Mark    @relation(fields: [markValue], references: [value])
+  skill     Skill   @relation(fields: [skillId], references: [id])
+  student   Student @relation(fields: [studentId], references: [id])
 
   @@id([studentId, markValue, skillId])
 }
 
 model Student {
-  firstName      String
-  id             Int              @default(autoincrement()) @id
-  lastName       String
-  username       Int              @unique
-  SkillToStudent SkillToStudent[]
-  Group          Group[]          @relation("StudentToGroup", references: [id])
+  firstName       String
+  id              Int              @default(autoincrement()) @id
+  lastName        String
+  username        Int              @unique
+  skillsToStudent SkillToStudent[]
+  groups          Group[]          @relation("StudentToGroup", references: [id])
 }
 
 model Teacher {
