@@ -8,47 +8,49 @@ generator typegraphql {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model Color {
-  id          Int           @default(autoincrement()) @id
-  name        String
-  rgb         String
-  skillStatuses SkillStatus[]
+  url      = env("DATABASE_URL_DEV")
 }
 
 model Contract {
-  date  DateTime
   end   DateTime
   id    Int      @default(autoincrement()) @id
   name  String
-  skills Skill[]
+  start DateTime
+  Skill Skill[]
+  Group Group[]  @relation("GroupToContract", references: [id])
+}
+
+model Group {
+  id       Int        @default(autoincrement()) @id
+  name     String     @unique
+  Contract Contract[] @relation("GroupToContract", references: [id])
+  Student  Student[]  @relation("StudentToGroup", references: [id])
+}
+
+model Mark {
+  rgb            String
+  text           String
+  value          String           @id
+  SkillToStudent SkillToStudent[]
 }
 
 model Skill {
   contractId     Int
   id             Int              @default(autoincrement()) @id
   name           String
-  contract       Contract         @relation(fields: [contractId], references: [id])
-  skillToStudents SkillToStudent[]
-}
-
-model SkillStatus {
-  colorId Int
-  id      Int    @default(autoincrement()) @id
-  mark    Mark
-  text    String
-  color   Color  @relation(fields: [colorId], references: [id])
+  Contract       Contract         @relation(fields: [contractId], references: [id])
+  SkillToStudent SkillToStudent[]
 }
 
 model SkillToStudent {
-  id        Int     @default(autoincrement()) @id
-  mark      Mark    @default(dbgenerated())
+  markValue String
   skillId   Int
   studentId Int
-  skill     Skill   @relation(fields: [skillId], references: [id])
-  student   Student @relation(fields: [studentId], references: [id])
+  Mark      Mark    @relation(fields: [markValue], references: [value])
+  Skill     Skill   @relation(fields: [skillId], references: [id])
+  Student   Student @relation(fields: [studentId], references: [id])
+
+  @@id([studentId, markValue, skillId])
 }
 
 model Student {
@@ -56,21 +58,11 @@ model Student {
   id             Int              @default(autoincrement()) @id
   lastName       String
   username       Int              @unique
-  skillsToStudent SkillToStudent[]
+  SkillToStudent SkillToStudent[]
+  Group          Group[]          @relation("StudentToGroup", references: [id])
 }
 
 model Teacher {
   email    String @id
   password String
-}
-
-enum Mark {
-  AWAITING_CORRECTION
-  BLUE
-  GREEN
-  MARKED
-  ORANGE
-  RED
-  TODO
-  TO_FINISH
 }
