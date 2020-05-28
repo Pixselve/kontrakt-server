@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { ContractUpdateOneRequiredWithoutSkillsInput } from "../inputs/ContractUpdateOneRequiredWithoutSkillsInput";
 
 @TypeGraphQL.InputType({
@@ -10,17 +11,17 @@ export class SkillUpdateWithoutSkillToStudentsDataInput {
     nullable: true,
     description: undefined
   })
-  id?: number | null;
+  id?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true,
     description: undefined
   })
-  name?: string | null;
+  name?: string | null | undefined;
 
   @TypeGraphQL.Field(_type => ContractUpdateOneRequiredWithoutSkillsInput, {
     nullable: true,
     description: undefined
   })
-  contract?: ContractUpdateOneRequiredWithoutSkillsInput | null;
+  contract?: ContractUpdateOneRequiredWithoutSkillsInput | null | undefined;
 }

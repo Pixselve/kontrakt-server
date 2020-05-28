@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { SkillCreateWithoutContractInput } from "../inputs/SkillCreateWithoutContractInput";
 import { SkillWhereUniqueInput } from "../inputs/SkillWhereUniqueInput";
 
@@ -11,11 +12,11 @@ export class SkillCreateManyWithoutContractInput {
     nullable: true,
     description: undefined
   })
-  create?: SkillCreateWithoutContractInput[] | null;
+  create?: SkillCreateWithoutContractInput[] | null | undefined;
 
   @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {
     nullable: true,
     description: undefined
   })
-  connect?: SkillWhereUniqueInput[] | null;
+  connect?: SkillWhereUniqueInput[] | null | undefined;
 }

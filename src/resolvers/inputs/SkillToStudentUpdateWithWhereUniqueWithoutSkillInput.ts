@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentUpdateWithoutSkillDataInput } from "../inputs/SkillToStudentUpdateWithoutSkillDataInput";
 import { SkillToStudentWhereUniqueInput } from "../inputs/SkillToStudentWhereUniqueInput";
 

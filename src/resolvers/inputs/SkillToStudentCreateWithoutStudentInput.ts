@@ -1,17 +1,18 @@
-import * as TypeGraphQL                              from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
+import { MarkCreateOneWithoutSkillsToStudentsInput } from "../inputs/MarkCreateOneWithoutSkillsToStudentsInput";
 import { SkillCreateOneWithoutSkillToStudentsInput } from "../inputs/SkillCreateOneWithoutSkillToStudentsInput";
-import { Mark }                                      from "../enums";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillToStudentCreateWithoutStudentInput {
-  @TypeGraphQL.Field(_type => Mark, {
-    nullable: true,
+  @TypeGraphQL.Field(_type => MarkCreateOneWithoutSkillsToStudentsInput, {
+    nullable: false,
     description: undefined
   })
-  mark?: keyof typeof Mark | null;
+  mark!: MarkCreateOneWithoutSkillsToStudentsInput;
 
   @TypeGraphQL.Field(_type => SkillCreateOneWithoutSkillToStudentsInput, {
     nullable: false,

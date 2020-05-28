@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { IntFilter } from "../inputs/IntFilter";
 import { SkillToStudentFilter } from "../inputs/SkillToStudentFilter";
 import { StringFilter } from "../inputs/StringFilter";
@@ -12,41 +13,41 @@ export class SkillScalarWhereInput {
     nullable: true,
     description: undefined
   })
-  id?: IntFilter | null;
-
-  @TypeGraphQL.Field(_type => StringFilter, {
-    nullable: true,
-    description: undefined
-  })
-  name?: StringFilter | null;
-
-  @TypeGraphQL.Field(_type => SkillToStudentFilter, {
-    nullable: true,
-    description: undefined
-  })
-  skillToStudents?: SkillToStudentFilter | null;
+  contractId?: IntFilter | null | undefined;
 
   @TypeGraphQL.Field(_type => IntFilter, {
     nullable: true,
     description: undefined
   })
-  contractId?: IntFilter | null;
+  id?: IntFilter | null | undefined;
+
+  @TypeGraphQL.Field(_type => StringFilter, {
+    nullable: true,
+    description: undefined
+  })
+  name?: StringFilter | null | undefined;
+
+  @TypeGraphQL.Field(_type => SkillToStudentFilter, {
+    nullable: true,
+    description: undefined
+  })
+  skillToStudents?: SkillToStudentFilter | null | undefined;
 
   @TypeGraphQL.Field(_type => [SkillScalarWhereInput], {
     nullable: true,
     description: undefined
   })
-  AND?: SkillScalarWhereInput[] | null;
+  AND?: SkillScalarWhereInput[] | null | undefined;
 
   @TypeGraphQL.Field(_type => [SkillScalarWhereInput], {
     nullable: true,
     description: undefined
   })
-  OR?: SkillScalarWhereInput[] | null;
+  OR?: SkillScalarWhereInput[] | null | undefined;
 
   @TypeGraphQL.Field(_type => [SkillScalarWhereInput], {
     nullable: true,
     description: undefined
   })
-  NOT?: SkillScalarWhereInput[] | null;
+  NOT?: SkillScalarWhereInput[] | null | undefined;
 }

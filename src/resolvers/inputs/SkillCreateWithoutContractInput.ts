@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentCreateManyWithoutSkillInput } from "../inputs/SkillToStudentCreateManyWithoutSkillInput";
 
 @TypeGraphQL.InputType({
@@ -16,5 +17,5 @@ export class SkillCreateWithoutContractInput {
     nullable: true,
     description: undefined
   })
-  skillToStudents?: SkillToStudentCreateManyWithoutSkillInput | null;
+  skillToStudents?: SkillToStudentCreateManyWithoutSkillInput | null | undefined;
 }

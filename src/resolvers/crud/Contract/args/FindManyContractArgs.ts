@@ -1,12 +1,10 @@
-import * as TypeGraphQL             from "type-graphql";
-import { ContractOrderByInput }     from "../../../inputs";
-import { ContractWhereInput }       from "../../../inputs";
-import { ContractWhereUniqueInput } from "../../../inputs";
+import * as TypeGraphQL from "type-graphql";
+import { ContractOrderByInput, ContractWhereInput, ContractWhereUniqueInput } from "../../../inputs";
 
 @TypeGraphQL.ArgsType()
 export class FindManyContractArgs {
-  @TypeGraphQL.Field(_type => ContractWhereInput, { nullable: true })
-  where?: ContractWhereInput | null;
+  @TypeGraphQL.Field(_type => ContractWhereInput)
+  where?: ContractWhereInput;
 
   @TypeGraphQL.Field(_type => ContractOrderByInput, { nullable: true })
   orderBy?: ContractOrderByInput | null;

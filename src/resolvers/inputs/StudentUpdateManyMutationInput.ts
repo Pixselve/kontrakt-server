@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -9,17 +10,23 @@ export class StudentUpdateManyMutationInput {
     nullable: true,
     description: undefined
   })
-  firstName?: string | null;
+  firstName?: string | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
     nullable: true,
     description: undefined
   })
-  id?: number | null;
+  id?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => String, {
     nullable: true,
     description: undefined
   })
-  lastName?: string | null;
+  lastName?: string | null | undefined;
+
+  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+    nullable: true,
+    description: undefined
+  })
+  username?: number | null | undefined;
 }

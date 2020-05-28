@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { ContractCreateWithoutSkillsInput } from "../inputs/ContractCreateWithoutSkillsInput";
 import { ContractUpdateWithoutSkillsDataInput } from "../inputs/ContractUpdateWithoutSkillsDataInput";
 import { ContractUpsertWithoutSkillsInput } from "../inputs/ContractUpsertWithoutSkillsInput";
@@ -13,23 +14,23 @@ export class ContractUpdateOneRequiredWithoutSkillsInput {
     nullable: true,
     description: undefined
   })
-  create?: ContractCreateWithoutSkillsInput | null;
+  create?: ContractCreateWithoutSkillsInput | null | undefined;
 
   @TypeGraphQL.Field(_type => ContractWhereUniqueInput, {
     nullable: true,
     description: undefined
   })
-  connect?: ContractWhereUniqueInput | null;
+  connect?: ContractWhereUniqueInput | null | undefined;
 
   @TypeGraphQL.Field(_type => ContractUpdateWithoutSkillsDataInput, {
     nullable: true,
     description: undefined
   })
-  update?: ContractUpdateWithoutSkillsDataInput | null;
+  update?: ContractUpdateWithoutSkillsDataInput | null | undefined;
 
   @TypeGraphQL.Field(_type => ContractUpsertWithoutSkillsInput, {
     nullable: true,
     description: undefined
   })
-  upsert?: ContractUpsertWithoutSkillsInput | null;
+  upsert?: ContractUpsertWithoutSkillsInput | null | undefined;
 }

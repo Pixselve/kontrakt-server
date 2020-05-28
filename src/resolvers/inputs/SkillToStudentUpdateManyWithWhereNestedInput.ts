@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentScalarWhereInput } from "../inputs/SkillToStudentScalarWhereInput";
 import { SkillToStudentUpdateManyDataInput } from "../inputs/SkillToStudentUpdateManyDataInput";
 

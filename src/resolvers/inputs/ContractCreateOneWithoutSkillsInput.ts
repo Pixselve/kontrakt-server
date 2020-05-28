@@ -11,11 +11,11 @@ export class ContractCreateOneWithoutSkillsInput {
     nullable: true,
     description: undefined
   })
-  create?: ContractCreateWithoutSkillsInput | null;
+  create?: ContractCreateWithoutSkillsInput | null | undefined;
 
   @TypeGraphQL.Field(_type => ContractWhereUniqueInput, {
     nullable: true,
     description: undefined
   })
-  connect?: ContractWhereUniqueInput | null;
+  connect?: ContractWhereUniqueInput | null | undefined;
 }

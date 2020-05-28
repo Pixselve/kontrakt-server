@@ -1,27 +1,22 @@
-import * as TypeGraphQL                                      from "type-graphql";
-import { SkillUpdateOneRequiredWithoutSkillToStudentsInput } from "./SkillUpdateOneRequiredWithoutSkillToStudentsInput";
-import { Mark }                                              from "../enums";
+import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
+import { MarkUpdateOneRequiredWithoutSkillsToStudentsInput } from "../inputs/MarkUpdateOneRequiredWithoutSkillsToStudentsInput";
+import { SkillUpdateOneRequiredWithoutSkillToStudentsInput } from "../inputs/SkillUpdateOneRequiredWithoutSkillToStudentsInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillToStudentUpdateWithoutStudentDataInput {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field(_type => MarkUpdateOneRequiredWithoutSkillsToStudentsInput, {
     nullable: true,
     description: undefined
   })
-  id?: number | null;
-
-  @TypeGraphQL.Field(_type => Mark, {
-    nullable: true,
-    description: undefined
-  })
-  mark?: keyof typeof Mark | null;
+  mark?: MarkUpdateOneRequiredWithoutSkillsToStudentsInput | null | undefined;
 
   @TypeGraphQL.Field(_type => SkillUpdateOneRequiredWithoutSkillToStudentsInput, {
     nullable: true,
     description: undefined
   })
-  skill?: SkillUpdateOneRequiredWithoutSkillToStudentsInput | null;
+  skill?: SkillUpdateOneRequiredWithoutSkillToStudentsInput | null | undefined;
 }

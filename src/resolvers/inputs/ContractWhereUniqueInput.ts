@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -9,5 +10,5 @@ export class ContractWhereUniqueInput {
     nullable: true,
     description: undefined
   })
-  id?: number | null;
+  id?: number | null | undefined;
 }

@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -9,5 +10,5 @@ export class TeacherWhereUniqueInput {
     nullable: true,
     description: undefined
   })
-  email?: string | null;
+  email?: string | null | undefined;
 }
