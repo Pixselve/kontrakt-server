@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { StudentOrderByInput } from "../../../inputs/StudentOrderByInput";
 import { StudentWhereInput } from "../../../inputs/StudentWhereInput";
 import { StudentWhereUniqueInput } from "../../../inputs/StudentWhereUniqueInput";
@@ -6,23 +7,23 @@ import { StudentWhereUniqueInput } from "../../../inputs/StudentWhereUniqueInput
 @TypeGraphQL.ArgsType()
 export class FindManyStudentArgs {
   @TypeGraphQL.Field(_type => StudentWhereInput, { nullable: true })
-  where?: StudentWhereInput | null;
+  where?: StudentWhereInput | null | undefined;
 
   @TypeGraphQL.Field(_type => StudentOrderByInput, { nullable: true })
-  orderBy?: StudentOrderByInput | null;
+  orderBy?: StudentOrderByInput | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  skip?: number | null;
+  skip?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => StudentWhereUniqueInput, { nullable: true })
-  after?: StudentWhereUniqueInput | null;
+  after?: StudentWhereUniqueInput | null | undefined;
 
   @TypeGraphQL.Field(_type => StudentWhereUniqueInput, { nullable: true })
-  before?: StudentWhereUniqueInput | null;
+  before?: StudentWhereUniqueInput | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  first?: number | null;
+  first?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  last?: number | null;
+  last?: number | null | undefined;
 }

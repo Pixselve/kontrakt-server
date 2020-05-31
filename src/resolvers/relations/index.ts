@@ -1,5 +1,9 @@
 export { ContractRelationsResolver } from "./Contract/ContractRelationsResolver";
 export * from "./Contract/args";
+export { GroupRelationsResolver } from "./Group/GroupRelationsResolver";
+export * from "./Group/args";
+export { MarkRelationsResolver } from "./Mark/MarkRelationsResolver";
+export * from "./Mark/args";
 export { SkillRelationsResolver } from "./Skill/SkillRelationsResolver";
 export * from "./Skill/args";
 export { SkillToStudentRelationsResolver } from "./SkillToStudent/SkillToStudentRelationsResolver";

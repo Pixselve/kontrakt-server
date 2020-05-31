@@ -1,26 +1,29 @@
-import * as TypeGraphQL                                                                         from "type-graphql";
-import { SkillToStudentOrderByInput, SkillToStudentWhereInput, SkillToStudentWhereUniqueInput } from "../../../inputs";
+import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
+import { SkillToStudentOrderByInput } from "../../../inputs/SkillToStudentOrderByInput";
+import { SkillToStudentWhereInput } from "../../../inputs/SkillToStudentWhereInput";
+import { SkillToStudentWhereUniqueInput } from "../../../inputs/SkillToStudentWhereUniqueInput";
 
 @TypeGraphQL.ArgsType()
 export class SkillSkillToStudentsArgs {
   @TypeGraphQL.Field(_type => SkillToStudentWhereInput, { nullable: true })
-  where?: SkillToStudentWhereInput | null;
+  where?: SkillToStudentWhereInput | null | undefined;
 
   @TypeGraphQL.Field(_type => SkillToStudentOrderByInput, { nullable: true })
-  orderBy?: SkillToStudentOrderByInput | null;
+  orderBy?: SkillToStudentOrderByInput | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  skip?: number | null;
+  skip?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => SkillToStudentWhereUniqueInput, { nullable: true })
-  after?: SkillToStudentWhereUniqueInput | null;
+  after?: SkillToStudentWhereUniqueInput | null | undefined;
 
   @TypeGraphQL.Field(_type => SkillToStudentWhereUniqueInput, { nullable: true })
-  before?: SkillToStudentWhereUniqueInput | null;
+  before?: SkillToStudentWhereUniqueInput | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  first?: number | null;
+  first?: number | null | undefined;
 
   @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
-  last?: number | null;
+  last?: number | null | undefined;
 }

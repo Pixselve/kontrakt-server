@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { GroupCreateManyWithoutContractsInput } from "../inputs/GroupCreateManyWithoutContractsInput";
 import { SkillCreateManyWithoutContractInput } from "../inputs/SkillCreateManyWithoutContractInput";
 

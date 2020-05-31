@@ -1,42 +1,33 @@
 import * as TypeGraphQL from "type-graphql";
-import { Args, Ctx, Root } from "type-graphql";
-import { StudentSkillToStudentsArgs } from "./args";
-import { SkillToStudent, Student } from "../../models";
-import { Context } from "../../../index";
-import { Mark } from "../../enums";
+import { Group } from "../../../models/Group";
+import { SkillToStudent } from "../../../models/SkillToStudent";
+import { Student } from "../../../models/Student";
+import { StudentGroupsArgs } from "./args/StudentGroupsArgs";
+import { StudentSkillsToStudentArgs } from "./args/StudentSkillsToStudentArgs";
 
-@TypeGraphQL.Resolver((_of) => Student)
+@TypeGraphQL.Resolver(_of => Student)
 export class StudentRelationsResolver {
-  @TypeGraphQL.FieldResolver((_type) => [SkillToStudent], {
+  @TypeGraphQL.FieldResolver(_type => [SkillToStudent], {
     nullable: true,
+    description: undefined,
   })
-  async skillToStudents(
-    @Root() student: Student,
-    @Ctx() { prisma }: Context,
-    @Args() args: StudentSkillToStudentsArgs
-  ): Promise<SkillToStudent[] | null> {
-    const skills = await prisma.skill.findMany({
+  async skillsToStudent(@TypeGraphQL.Root() student: Student, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: StudentSkillsToStudentArgs): Promise<SkillToStudent[] | null | undefined> {
+    return ctx.prisma.student.findOne({
       where: {
-        skillToStudents: { none: { student: { id: student.id } } },
+        id: student.id,
       },
-    });
+    }).skillsToStudent(args);
+  }
 
-    const skillToStudent = await prisma.student
-      .findOne({
-        where: {
-          id: student.id,
-        },
-      })
-      .skillsToStudent(args);
-
-    return [
-      ...skillToStudent,
-      ...skills.map((skill) => ({
-        id: parseInt(`${ student.id }${ skill.id }`),
-        mark: Mark.TODO,
-        skillId: skill.id,
-        studentId: student.id
-      })),
-    ];
+  @TypeGraphQL.FieldResolver(_type => [Group], {
+    nullable: true,
+    description: undefined,
+  })
+  async groups(@TypeGraphQL.Root() student: Student, @TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: StudentGroupsArgs): Promise<Group[] | null | undefined> {
+    return ctx.prisma.student.findOne({
+      where: {
+        id: student.id,
+      },
+    }).groups(args);
   }
 }

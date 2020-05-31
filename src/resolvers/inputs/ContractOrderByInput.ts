@@ -1,6 +1,6 @@
 import * as TypeGraphQL from "type-graphql";
 import GraphQLJSON from "graphql-type-json";
-import { OrderByArg } from "../../enums";
+import { OrderByArg } from "../../enums/OrderByArg";
 
 @TypeGraphQL.InputType({
   isAbstract: true,

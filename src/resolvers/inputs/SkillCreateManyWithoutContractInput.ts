@@ -12,6 +12,7 @@ export class SkillCreateManyWithoutContractInput {
     nullable: true,
     description: undefined
   })
+
   create?: SkillCreateWithoutContractInput[] | null | undefined;
 
   @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {

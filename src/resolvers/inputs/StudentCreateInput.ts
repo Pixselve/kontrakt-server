@@ -1,40 +1,29 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupCreateManyWithoutStudentsInput } from "../inputs/GroupCreateManyWithoutStudentsInput";
-import { SkillToStudentCreateManyWithoutStudentInput } from "../inputs/SkillToStudentCreateManyWithoutStudentInput";
+import { IsNotEmpty } from "class-validator";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class StudentCreateInput {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
+  @IsNotEmpty()
   firstName!: string;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
+  @IsNotEmpty()
   lastName!: string;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
-    nullable: false,
-    description: undefined
-  })
-  username!: number;
-
-  @TypeGraphQL.Field(_type => SkillToStudentCreateManyWithoutStudentInput, {
+  @TypeGraphQL.Field((_type) => GroupCreateManyWithoutStudentsInput, {
     nullable: true,
-    description: undefined
-  })
-  skillsToStudent?: SkillToStudentCreateManyWithoutStudentInput | null | undefined;
-
-  @TypeGraphQL.Field(_type => GroupCreateManyWithoutStudentsInput, {
-    nullable: true,
-    description: undefined
+    description: undefined,
   })
   groups?: GroupCreateManyWithoutStudentsInput | null | undefined;
 }

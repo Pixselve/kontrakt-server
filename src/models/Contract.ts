@@ -2,6 +2,8 @@ import * as TypeGraphQL from "type-graphql";
 import { Field, ObjectType } from "type-graphql";
 import { Skill } from "./Skill";
 import { Group } from "./Group";
+import "reflect-metadata";
+
 
 @ObjectType({
   isAbstract: true,

@@ -1,20 +1,14 @@
-import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
+import { Field, InputType } from "type-graphql";
+import { IsEmail, IsNotEmpty, MinLength } from "class-validator";
 
-@TypeGraphQL.InputType({
-  isAbstract: true,
-  description: undefined,
-})
+@InputType({})
 export class TeacherCreateInput {
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false,
-    description: undefined
-  })
+  @Field((_type) => String)
+  @IsEmail()
   email!: string;
 
-  @TypeGraphQL.Field(_type => String, {
-    nullable: false,
-    description: undefined
-  })
+  @Field((_type) => String)
+  @IsNotEmpty()
+  @MinLength(3)
   password!: string;
 }

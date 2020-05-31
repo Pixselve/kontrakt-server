@@ -1,4 +1,5 @@
 import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { ContractCreateWithoutGroupsInput } from "../inputs/ContractCreateWithoutGroupsInput";
 import { ContractWhereUniqueInput } from "../inputs/ContractWhereUniqueInput";
 

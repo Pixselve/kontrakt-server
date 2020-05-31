@@ -1,1 +1,2 @@
-export { StudentSkillToStudentsArgs } from "./StudentSkillToStudentsArgs";
+export { StudentGroupsArgs } from "./StudentGroupsArgs";
+export { StudentSkillsToStudentArgs } from "./StudentSkillsToStudentArgs";

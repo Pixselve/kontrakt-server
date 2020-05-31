@@ -1,9 +1,9 @@
-import { ArgsType, Field } from "type-graphql";
+import * as TypeGraphQL from "type-graphql";
+import GraphQLJSON from "graphql-type-json";
 import { ContractWhereUniqueInput } from "../../../inputs/ContractWhereUniqueInput";
 
-
-@ArgsType()
+@TypeGraphQL.ArgsType()
 export class FindOneContractArgs {
-  @Field((_type) => ContractWhereUniqueInput, { nullable: false })
+  @TypeGraphQL.Field(_type => ContractWhereUniqueInput, { nullable: false })
   where!: ContractWhereUniqueInput;
 }
