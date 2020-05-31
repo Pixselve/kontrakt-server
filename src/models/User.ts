@@ -4,9 +4,9 @@ import { Student } from "./Student";
 
 @ObjectType({})
 export class User {
-  @Field(returns => Teacher, { nullable: true })
+  @Field((returns) => Teacher, { nullable: true })
   teacher?: Teacher;
 
-  @Field(returns => Student, { nullable: true })
+  @Field((returns) => Student, { nullable: true })
   student?: Student;
 }

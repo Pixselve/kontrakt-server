@@ -50,7 +50,7 @@ model SkillToStudent {
   skill     Skill   @relation(fields: [skillId], references: [id])
   student   Student @relation(fields: [studentId], references: [id])
 
-  @@id([studentId, markValue, skillId])
+  @@id([studentId, skillId])
 }
 
 model Student {

@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentFilter } from "../inputs/SkillToStudentFilter";
 import { StringFilter } from "../inputs/StringFilter";
 
@@ -8,45 +7,45 @@ import { StringFilter } from "../inputs/StringFilter";
   description: undefined,
 })
 export class MarkWhereInput {
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field((_type) => StringFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   rgb?: StringFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field((_type) => StringFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   text?: StringFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field((_type) => StringFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   value?: StringFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillToStudentFilter, {
+  @TypeGraphQL.Field((_type) => SkillToStudentFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   skillsToStudents?: SkillToStudentFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => [MarkWhereInput], {
+  @TypeGraphQL.Field((_type) => [MarkWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   AND?: MarkWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [MarkWhereInput], {
+  @TypeGraphQL.Field((_type) => [MarkWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   OR?: MarkWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [MarkWhereInput], {
+  @TypeGraphQL.Field((_type) => [MarkWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   NOT?: MarkWhereInput[] | null | undefined;
 }

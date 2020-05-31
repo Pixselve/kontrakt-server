@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillCreateWithoutContractInput } from "../inputs/SkillCreateWithoutContractInput";
 import { SkillScalarWhereInput } from "../inputs/SkillScalarWhereInput";
 import { SkillUpdateManyWithWhereNestedInput } from "../inputs/SkillUpdateManyWithWhereNestedInput";
@@ -12,57 +11,63 @@ import { SkillWhereUniqueInput } from "../inputs/SkillWhereUniqueInput";
   description: undefined,
 })
 export class SkillUpdateManyWithoutContractInput {
-  @TypeGraphQL.Field(_type => [SkillCreateWithoutContractInput], {
+  @TypeGraphQL.Field((_type) => [SkillCreateWithoutContractInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: SkillCreateWithoutContractInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: SkillWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   set?: SkillWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   disconnect?: SkillWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   delete?: SkillWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillUpdateWithWhereUniqueWithoutContractInput], {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => [SkillUpdateWithWhereUniqueWithoutContractInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   update?: SkillUpdateWithWhereUniqueWithoutContractInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillUpdateManyWithWhereNestedInput], {
+  @TypeGraphQL.Field((_type) => [SkillUpdateManyWithWhereNestedInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   updateMany?: SkillUpdateManyWithWhereNestedInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillScalarWhereInput], {
+  @TypeGraphQL.Field((_type) => [SkillScalarWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   deleteMany?: SkillScalarWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillUpsertWithWhereUniqueWithoutContractInput], {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => [SkillUpsertWithWhereUniqueWithoutContractInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   upsert?: SkillUpsertWithWhereUniqueWithoutContractInput[] | null | undefined;
 }

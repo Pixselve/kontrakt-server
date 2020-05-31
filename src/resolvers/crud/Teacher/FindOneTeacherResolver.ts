@@ -1,16 +1,19 @@
 import * as TypeGraphQL from "type-graphql";
-import { FindOneTeacherArgs } from "./args/FindOneTeacherArgs";
-import { Teacher } from "../../../models/Teacher";
 import { Authorized } from "type-graphql";
+import { Teacher } from "../../../models";
+import { FindOneTeacherArgs } from "./args";
 
-@TypeGraphQL.Resolver(_of => Teacher)
+@TypeGraphQL.Resolver((_of) => Teacher)
 export class FindOneTeacherResolver {
   @Authorized("TEACHER")
-  @TypeGraphQL.Query(_returns => Teacher, {
+  @TypeGraphQL.Query((_returns) => Teacher, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
-  async teacher(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: FindOneTeacherArgs): Promise<Teacher | null | undefined> {
+  async teacher(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: FindOneTeacherArgs
+  ): Promise<Teacher | null | undefined> {
     return ctx.prisma.teacher.findOne(args);
   }
 }

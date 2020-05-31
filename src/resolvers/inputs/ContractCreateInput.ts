@@ -1,40 +1,39 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
-import { GroupCreateManyWithoutContractsInput } from "../inputs/GroupCreateManyWithoutContractsInput";
-import { SkillCreateManyWithoutContractInput } from "../inputs/SkillCreateManyWithoutContractInput";
+import { SkillCreateManyWithoutContractInput } from "./SkillCreateManyWithoutContractInput";
+import { GroupCreateManyWithoutContractsInput } from "./GroupCreateManyWithoutContractsInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class ContractCreateInput {
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   end!: Date;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   name!: string;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   start!: Date;
 
-  @TypeGraphQL.Field(_type => SkillCreateManyWithoutContractInput, {
+  @TypeGraphQL.Field((_type) => SkillCreateManyWithoutContractInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   skills?: SkillCreateManyWithoutContractInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => GroupCreateManyWithoutContractsInput, {
+  @TypeGraphQL.Field((_type) => GroupCreateManyWithoutContractsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   groups?: GroupCreateManyWithoutContractsInput | null | undefined;
 }

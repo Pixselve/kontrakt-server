@@ -1,17 +1,20 @@
 import { Args, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
-import { CreateContractArgs } from "./args/CreateContractArgs";
+
 import { Contract } from "../../../models";
 import { Context } from "../../../index";
+import { CreateContractArgs } from "./args";
 
-
-@Resolver(_of => Contract)
+@Resolver((_of) => Contract)
 export class CreateContractResolver {
   @Authorized("TEACHER")
-  @Mutation(_returns => Contract, {
+  @Mutation((_returns) => Contract, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  async createContract(@Ctx() ctx: Context, @Args() args: CreateContractArgs): Promise<Contract> {
+  async createContract(
+    @Ctx() ctx: Context,
+    @Args() args: CreateContractArgs
+  ): Promise<Contract> {
     // @ts-ignore
     return ctx.prisma.contract.create(args);
   }

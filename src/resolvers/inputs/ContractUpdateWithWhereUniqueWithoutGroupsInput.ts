@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { ContractUpdateWithoutGroupsDataInput } from "../inputs/ContractUpdateWithoutGroupsDataInput";
 import { ContractWhereUniqueInput } from "../inputs/ContractWhereUniqueInput";
 
@@ -8,15 +7,15 @@ import { ContractWhereUniqueInput } from "../inputs/ContractWhereUniqueInput";
   description: undefined,
 })
 export class ContractUpdateWithWhereUniqueWithoutGroupsInput {
-  @TypeGraphQL.Field(_type => ContractWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => ContractWhereUniqueInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   where!: ContractWhereUniqueInput;
 
-  @TypeGraphQL.Field(_type => ContractUpdateWithoutGroupsDataInput, {
+  @TypeGraphQL.Field((_type) => ContractUpdateWithoutGroupsDataInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   data!: ContractUpdateWithoutGroupsDataInput;
 }

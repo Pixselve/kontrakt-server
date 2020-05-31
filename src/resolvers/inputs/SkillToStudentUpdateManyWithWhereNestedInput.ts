@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentScalarWhereInput } from "../inputs/SkillToStudentScalarWhereInput";
 import { SkillToStudentUpdateManyDataInput } from "../inputs/SkillToStudentUpdateManyDataInput";
 
@@ -8,15 +7,15 @@ import { SkillToStudentUpdateManyDataInput } from "../inputs/SkillToStudentUpdat
   description: undefined,
 })
 export class SkillToStudentUpdateManyWithWhereNestedInput {
-  @TypeGraphQL.Field(_type => SkillToStudentScalarWhereInput, {
+  @TypeGraphQL.Field((_type) => SkillToStudentScalarWhereInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   where!: SkillToStudentScalarWhereInput;
 
-  @TypeGraphQL.Field(_type => SkillToStudentUpdateManyDataInput, {
+  @TypeGraphQL.Field((_type) => SkillToStudentUpdateManyDataInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   data!: SkillToStudentUpdateManyDataInput;
 }

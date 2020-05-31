@@ -1,17 +1,16 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillCreateInput } from "../../../inputs/SkillCreateInput";
 import { SkillUpdateInput } from "../../../inputs/SkillUpdateInput";
 import { SkillWhereUniqueInput } from "../../../inputs/SkillWhereUniqueInput";
 
 @TypeGraphQL.ArgsType()
 export class UpsertSkillArgs {
-  @TypeGraphQL.Field(_type => SkillWhereUniqueInput, { nullable: false })
+  @TypeGraphQL.Field((_type) => SkillWhereUniqueInput, { nullable: false })
   where!: SkillWhereUniqueInput;
 
-  @TypeGraphQL.Field(_type => SkillCreateInput, { nullable: false })
+  @TypeGraphQL.Field((_type) => SkillCreateInput, { nullable: false })
   create!: SkillCreateInput;
 
-  @TypeGraphQL.Field(_type => SkillUpdateInput, { nullable: false })
+  @TypeGraphQL.Field((_type) => SkillUpdateInput, { nullable: false })
   update!: SkillUpdateInput;
 }

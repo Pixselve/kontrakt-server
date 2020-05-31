@@ -6,20 +6,19 @@ import * as express from "express";
 import * as jwt from "express-jwt";
 import buildSchema from "./utils/buildSchema";
 
-
 interface UserTypeTeacher {
-  type: "TEACHER"
-  teacher: { email: string }
+  type: "TEACHER";
+  teacher: { email: string };
 }
 
 interface UserTypeStudent {
-  type: "STUDENT"
-  student: { id: number }
+  type: "STUDENT";
+  student: { id: number };
 }
 
 export interface Context {
   prisma: PrismaClient;
-  user: UserTypeTeacher | UserTypeStudent
+  user: UserTypeTeacher | UserTypeStudent;
 }
 
 const prisma = new PrismaClient();
@@ -48,7 +47,7 @@ async function main() {
 
   await app.listen({ port: process.env.PORT || 4000 });
   console.log(
-    `🚀 Server ready at http://localhost:${ process.env.PORT || 4000 }${
+    `🚀 Server ready at http://localhost:${process.env.PORT || 4000}${
       server.graphqlPath
     }`
   );

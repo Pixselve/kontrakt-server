@@ -110,7 +110,7 @@ export { StudentCreateOneWithoutSkillsToStudentInput } from "./StudentCreateOneW
 export { StudentCreateWithoutGroupsInput } from "./StudentCreateWithoutGroupsInput";
 export { StudentCreateWithoutSkillsToStudentInput } from "./StudentCreateWithoutSkillsToStudentInput";
 export { StudentFilter } from "./StudentFilter";
-export { StudentIdMarkValueSkillIdCompoundUniqueInput } from "./StudentIdMarkValueSkillIdCompoundUniqueInput";
+export { StudentIdSkillIdCompoundUniqueInput } from "./StudentIdSkillIdCompoundUniqueInput";
 export { StudentOrderByInput } from "./StudentOrderByInput";
 export { StudentScalarWhereInput } from "./StudentScalarWhereInput";
 export { StudentUpdateInput } from "./StudentUpdateInput";

@@ -1,7 +1,8 @@
 import { Args, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
-import { CreateStudentArgs } from "./args/CreateStudentArgs";
+
 import { Student } from "../../../models";
 import { Context } from "../../../index";
+import { CreateStudentArgs } from "./args";
 
 @Resolver((_of) => Student)
 export class CreateStudentResolver {
@@ -18,12 +19,13 @@ export class CreateStudentResolver {
     let username = generateSixDigitNumber();
     let i = 0;
     while (
-      (await prisma.student.findMany({ where: { username } })).length > 0 && i < 10
-      ) {
+      (await prisma.student.findMany({ where: { username } })).length > 0 &&
+      i < 10
+    ) {
       username = generateSixDigitNumber();
       i++;
     }
-    if (i >= 10) throw new Error("UsernameRangeExceeded")
+    if (i >= 10) throw new Error("UsernameRangeExceeded");
 
     // @ts-ignore
     return prisma.student.create({ data: { ...data, username } });

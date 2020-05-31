@@ -1,16 +1,20 @@
 import * as TypeGraphQL from "type-graphql";
-import { DeleteStudentArgs } from "./args/DeleteStudentArgs";
-import { Student } from "../../../models/Student";
 import { Authorized } from "type-graphql";
 
-@TypeGraphQL.Resolver(_of => Student)
+import { Student } from "../../../models/Student";
+import { DeleteStudentArgs } from "./args";
+
+@TypeGraphQL.Resolver((_of) => Student)
 export class DeleteStudentResolver {
   @Authorized("TEACHER")
-  @TypeGraphQL.Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation((_returns) => Student, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
-  async deleteStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: DeleteStudentArgs): Promise<Student | null | undefined> {
+  async deleteStudent(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: DeleteStudentArgs
+  ): Promise<Student | null | undefined> {
     return ctx.prisma.student.delete(args);
   }
 }

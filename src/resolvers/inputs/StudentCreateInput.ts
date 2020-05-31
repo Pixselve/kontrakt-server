@@ -1,6 +1,7 @@
 import * as TypeGraphQL from "type-graphql";
-import { GroupCreateManyWithoutStudentsInput } from "../inputs/GroupCreateManyWithoutStudentsInput";
+
 import { IsNotEmpty } from "class-validator";
+import { GroupCreateManyWithoutStudentsInput } from "./GroupCreateManyWithoutStudentsInput";
 
 @TypeGraphQL.InputType({
   isAbstract: true,

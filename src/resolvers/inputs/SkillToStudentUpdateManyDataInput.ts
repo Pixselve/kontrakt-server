@@ -1,15 +1,11 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
-import { SkillToStudentScalarWhereInput } from "./SkillToStudentScalarWhereInput";
+import { Field } from "type-graphql";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class SkillToStudentUpdateManyDataInput {
-  @TypeGraphQL.Field(_type => String, {
-    nullable: true,
-    description: undefined
-  })
+  @Field()
   none?: string;
 }

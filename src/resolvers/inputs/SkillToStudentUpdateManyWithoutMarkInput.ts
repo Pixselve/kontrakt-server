@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentCreateWithoutMarkInput } from "../inputs/SkillToStudentCreateWithoutMarkInput";
 import { SkillToStudentScalarWhereInput } from "../inputs/SkillToStudentScalarWhereInput";
 import { SkillToStudentUpdateManyWithWhereNestedInput } from "../inputs/SkillToStudentUpdateManyWithWhereNestedInput";
@@ -12,57 +11,75 @@ import { SkillToStudentWhereUniqueInput } from "../inputs/SkillToStudentWhereUni
   description: undefined,
 })
 export class SkillToStudentUpdateManyWithoutMarkInput {
-  @TypeGraphQL.Field(_type => [SkillToStudentCreateWithoutMarkInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentCreateWithoutMarkInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: SkillToStudentCreateWithoutMarkInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: SkillToStudentWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   set?: SkillToStudentWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   disconnect?: SkillToStudentWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   delete?: SkillToStudentWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentUpdateWithWhereUniqueWithoutMarkInput], {
-    nullable: true,
-    description: undefined
-  })
-  update?: SkillToStudentUpdateWithWhereUniqueWithoutMarkInput[] | null | undefined;
+  @TypeGraphQL.Field(
+    (_type) => [SkillToStudentUpdateWithWhereUniqueWithoutMarkInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
+  update?:
+    | SkillToStudentUpdateWithWhereUniqueWithoutMarkInput[]
+    | null
+    | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentUpdateManyWithWhereNestedInput], {
-    nullable: true,
-    description: undefined
-  })
-  updateMany?: SkillToStudentUpdateManyWithWhereNestedInput[] | null | undefined;
+  @TypeGraphQL.Field(
+    (_type) => [SkillToStudentUpdateManyWithWhereNestedInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
+  updateMany?:
+    | SkillToStudentUpdateManyWithWhereNestedInput[]
+    | null
+    | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentScalarWhereInput], {
+  @TypeGraphQL.Field((_type) => [SkillToStudentScalarWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   deleteMany?: SkillToStudentScalarWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [SkillToStudentUpsertWithWhereUniqueWithoutMarkInput], {
-    nullable: true,
-    description: undefined
-  })
-  upsert?: SkillToStudentUpsertWithWhereUniqueWithoutMarkInput[] | null | undefined;
+  @TypeGraphQL.Field(
+    (_type) => [SkillToStudentUpsertWithWhereUniqueWithoutMarkInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
+  upsert?:
+    | SkillToStudentUpsertWithWhereUniqueWithoutMarkInput[]
+    | null
+    | undefined;
 }

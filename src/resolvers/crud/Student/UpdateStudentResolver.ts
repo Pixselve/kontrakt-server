@@ -1,16 +1,20 @@
 import * as TypeGraphQL from "type-graphql";
-import { UpdateStudentArgs } from "./args/UpdateStudentArgs";
-import { Student } from "../../../models/Student";
 import { Authorized } from "type-graphql";
 
-@TypeGraphQL.Resolver(_of => Student)
+import { Student } from "../../../models/Student";
+import { UpdateStudentArgs } from "./args";
+
+@TypeGraphQL.Resolver((_of) => Student)
 export class UpdateStudentResolver {
   @Authorized("TEACHER")
-  @TypeGraphQL.Mutation(_returns => Student, {
+  @TypeGraphQL.Mutation((_returns) => Student, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
-  async updateStudent(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UpdateStudentArgs): Promise<Student | null | undefined> {
+  async updateStudent(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: UpdateStudentArgs
+  ): Promise<Student | null | undefined> {
     return ctx.prisma.student.update(args);
   }
 }

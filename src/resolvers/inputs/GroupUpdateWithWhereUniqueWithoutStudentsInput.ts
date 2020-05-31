@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupUpdateWithoutStudentsDataInput } from "../inputs/GroupUpdateWithoutStudentsDataInput";
 import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
 
@@ -8,15 +7,15 @@ import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
   description: undefined,
 })
 export class GroupUpdateWithWhereUniqueWithoutStudentsInput {
-  @TypeGraphQL.Field(_type => GroupWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => GroupWhereUniqueInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   where!: GroupWhereUniqueInput;
 
-  @TypeGraphQL.Field(_type => GroupUpdateWithoutStudentsDataInput, {
+  @TypeGraphQL.Field((_type) => GroupUpdateWithoutStudentsDataInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   data!: GroupUpdateWithoutStudentsDataInput;
 }

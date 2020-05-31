@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillToStudentUpdateManyWithoutStudentInput } from "../inputs/SkillToStudentUpdateManyWithoutStudentInput";
 
 @TypeGraphQL.InputType({
@@ -7,33 +6,36 @@ import { SkillToStudentUpdateManyWithoutStudentInput } from "../inputs/SkillToSt
   description: undefined,
 })
 export class StudentUpdateWithoutGroupsDataInput {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   firstName?: string | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   id?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   lastName?: string | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   username?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillToStudentUpdateManyWithoutStudentInput, {
+  @TypeGraphQL.Field((_type) => SkillToStudentUpdateManyWithoutStudentInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
-  skillsToStudent?: SkillToStudentUpdateManyWithoutStudentInput | null | undefined;
+  skillsToStudent?:
+    | SkillToStudentUpdateManyWithoutStudentInput
+    | null
+    | undefined;
 }

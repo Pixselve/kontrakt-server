@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { ContractCreateWithoutGroupsInput } from "../inputs/ContractCreateWithoutGroupsInput";
 import { ContractScalarWhereInput } from "../inputs/ContractScalarWhereInput";
 import { ContractUpdateManyWithWhereNestedInput } from "../inputs/ContractUpdateManyWithWhereNestedInput";
@@ -12,57 +11,63 @@ import { ContractWhereUniqueInput } from "../inputs/ContractWhereUniqueInput";
   description: undefined,
 })
 export class ContractUpdateManyWithoutGroupsInput {
-  @TypeGraphQL.Field(_type => [ContractCreateWithoutGroupsInput], {
+  @TypeGraphQL.Field((_type) => [ContractCreateWithoutGroupsInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: ContractCreateWithoutGroupsInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [ContractWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: ContractWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [ContractWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   set?: ContractWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [ContractWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   disconnect?: ContractWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [ContractWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   delete?: ContractWhereUniqueInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractUpdateWithWhereUniqueWithoutGroupsInput], {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => [ContractUpdateWithWhereUniqueWithoutGroupsInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   update?: ContractUpdateWithWhereUniqueWithoutGroupsInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractUpdateManyWithWhereNestedInput], {
+  @TypeGraphQL.Field((_type) => [ContractUpdateManyWithWhereNestedInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   updateMany?: ContractUpdateManyWithWhereNestedInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractScalarWhereInput], {
+  @TypeGraphQL.Field((_type) => [ContractScalarWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   deleteMany?: ContractScalarWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [ContractUpsertWithWhereUniqueWithoutGroupsInput], {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => [ContractUpsertWithWhereUniqueWithoutGroupsInput],
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   upsert?: ContractUpsertWithWhereUniqueWithoutGroupsInput[] | null | undefined;
 }

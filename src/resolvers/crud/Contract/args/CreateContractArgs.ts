@@ -1,9 +1,8 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
-import { ContractCreateInput } from "../../../inputs";
+import { ContractCreateInput } from "../../../inputs/ContractCreateInput";
 
 @TypeGraphQL.ArgsType()
 export class CreateContractArgs {
-  @TypeGraphQL.Field(_type => ContractCreateInput, { nullable: false })
+  @TypeGraphQL.Field((_type) => ContractCreateInput, { nullable: false })
   data!: ContractCreateInput;
 }

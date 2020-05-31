@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillCreateWithoutSkillToStudentsInput } from "../inputs/SkillCreateWithoutSkillToStudentsInput";
 import { SkillWhereUniqueInput } from "../inputs/SkillWhereUniqueInput";
 
@@ -8,15 +7,15 @@ import { SkillWhereUniqueInput } from "../inputs/SkillWhereUniqueInput";
   description: undefined,
 })
 export class SkillCreateOneWithoutSkillToStudentsInput {
-  @TypeGraphQL.Field(_type => SkillCreateWithoutSkillToStudentsInput, {
+  @TypeGraphQL.Field((_type) => SkillCreateWithoutSkillToStudentsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: SkillCreateWithoutSkillToStudentsInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => SkillWhereUniqueInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: SkillWhereUniqueInput | null | undefined;
 }

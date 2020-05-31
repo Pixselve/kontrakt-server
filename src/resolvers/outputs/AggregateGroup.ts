@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { AggregateGroupCountArgs } from "./args/AggregateGroupCountArgs";
 
 @TypeGraphQL.ObjectType({
@@ -7,11 +6,14 @@ import { AggregateGroupCountArgs } from "./args/AggregateGroupCountArgs";
   description: undefined,
 })
 export class AggregateGroup {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  count(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: AggregateGroupCountArgs) {
+  count(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: AggregateGroupCountArgs
+  ) {
     return ctx.prisma.group.count(args);
   }
 }

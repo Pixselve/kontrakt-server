@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupCreateWithoutContractsInput } from "../inputs/GroupCreateWithoutContractsInput";
 import { GroupUpdateWithoutContractsDataInput } from "../inputs/GroupUpdateWithoutContractsDataInput";
 import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
@@ -9,21 +8,21 @@ import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
   description: undefined,
 })
 export class GroupUpsertWithWhereUniqueWithoutContractsInput {
-  @TypeGraphQL.Field(_type => GroupWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => GroupWhereUniqueInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   where!: GroupWhereUniqueInput;
 
-  @TypeGraphQL.Field(_type => GroupUpdateWithoutContractsDataInput, {
+  @TypeGraphQL.Field((_type) => GroupUpdateWithoutContractsDataInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   update!: GroupUpdateWithoutContractsDataInput;
 
-  @TypeGraphQL.Field(_type => GroupCreateWithoutContractsInput, {
+  @TypeGraphQL.Field((_type) => GroupCreateWithoutContractsInput, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   create!: GroupCreateWithoutContractsInput;
 }

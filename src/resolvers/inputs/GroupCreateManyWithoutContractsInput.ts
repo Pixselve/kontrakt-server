@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupCreateWithoutContractsInput } from "../inputs/GroupCreateWithoutContractsInput";
 import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
 
@@ -8,15 +7,15 @@ import { GroupWhereUniqueInput } from "../inputs/GroupWhereUniqueInput";
   description: undefined,
 })
 export class GroupCreateManyWithoutContractsInput {
-  @TypeGraphQL.Field(_type => [GroupCreateWithoutContractsInput], {
+  @TypeGraphQL.Field((_type) => [GroupCreateWithoutContractsInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: GroupCreateWithoutContractsInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [GroupWhereUniqueInput], {
+  @TypeGraphQL.Field((_type) => [GroupWhereUniqueInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: GroupWhereUniqueInput[] | null | undefined;
 }

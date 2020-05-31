@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { MarkUpdateOneRequiredWithoutSkillsToStudentsInput } from "../inputs/MarkUpdateOneRequiredWithoutSkillsToStudentsInput";
 import { SkillUpdateOneRequiredWithoutSkillToStudentsInput } from "../inputs/SkillUpdateOneRequiredWithoutSkillToStudentsInput";
 
@@ -8,15 +7,21 @@ import { SkillUpdateOneRequiredWithoutSkillToStudentsInput } from "../inputs/Ski
   description: undefined,
 })
 export class SkillToStudentUpdateWithoutStudentDataInput {
-  @TypeGraphQL.Field(_type => MarkUpdateOneRequiredWithoutSkillsToStudentsInput, {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => MarkUpdateOneRequiredWithoutSkillsToStudentsInput,
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   mark?: MarkUpdateOneRequiredWithoutSkillsToStudentsInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillUpdateOneRequiredWithoutSkillToStudentsInput, {
-    nullable: true,
-    description: undefined
-  })
+  @TypeGraphQL.Field(
+    (_type) => SkillUpdateOneRequiredWithoutSkillToStudentsInput,
+    {
+      nullable: true,
+      description: undefined,
+    }
+  )
   skill?: SkillUpdateOneRequiredWithoutSkillToStudentsInput | null | undefined;
 }

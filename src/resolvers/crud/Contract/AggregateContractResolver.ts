@@ -1,12 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
 import { Contract } from "../../../models/Contract";
-import { AggregateContract } from "../../outputs/AggregateContract";
+import { AggregateContract } from "../../outputs";
 
-@TypeGraphQL.Resolver(_of => Contract)
+@TypeGraphQL.Resolver((_of) => Contract)
 export class AggregateContractResolver {
-  @TypeGraphQL.Query(_returns => AggregateContract, {
+  @TypeGraphQL.Query((_returns) => AggregateContract, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   async aggregateContract(): Promise<AggregateContract> {
     return new AggregateContract();

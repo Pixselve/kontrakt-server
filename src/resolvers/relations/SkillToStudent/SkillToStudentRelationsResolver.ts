@@ -4,53 +4,65 @@ import { Skill } from "../../../models/Skill";
 import { SkillToStudent } from "../../../models/SkillToStudent";
 import { Student } from "../../../models/Student";
 
-@TypeGraphQL.Resolver(_of => SkillToStudent)
+@TypeGraphQL.Resolver((_of) => SkillToStudent)
 export class SkillToStudentRelationsResolver {
-  @TypeGraphQL.FieldResolver(_type => Mark, {
+  @TypeGraphQL.FieldResolver((_type) => Mark, {
     nullable: false,
     description: undefined,
   })
-  async mark(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() ctx: any): Promise<Mark> {
-    return ctx.prisma.skillToStudent.findOne({
-      where: {
-        markValue_skillId_studentId: {
-          markValue: skillToStudent.markValue,
-          skillId: skillToStudent.skillId,
-          studentId: skillToStudent.studentId,
+  async mark(
+    @TypeGraphQL.Root() skillToStudent: SkillToStudent,
+    @TypeGraphQL.Ctx() ctx: any
+  ): Promise<Mark> {
+    return ctx.prisma.skillToStudent
+      .findOne({
+        where: {
+          skillId_studentId: {
+            skillId: skillToStudent.skillId,
+            studentId: skillToStudent.studentId,
+          },
         },
-      },
-    }).mark({});
+      })
+      .mark({});
   }
 
-  @TypeGraphQL.FieldResolver(_type => Skill, {
+  @TypeGraphQL.FieldResolver((_type) => Skill, {
     nullable: false,
     description: undefined,
   })
-  async skill(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() ctx: any): Promise<Skill> {
-    return ctx.prisma.skillToStudent.findOne({
-      where: {
-        markValue_skillId_studentId: {
-          markValue: skillToStudent.markValue,
-          skillId: skillToStudent.skillId,
-          studentId: skillToStudent.studentId,
+  async skill(
+    @TypeGraphQL.Root() skillToStudent: SkillToStudent,
+    @TypeGraphQL.Ctx() ctx: any
+  ): Promise<Skill> {
+    return ctx.prisma.skillToStudent
+      .findOne({
+        where: {
+          skillId_studentId: {
+            skillId: skillToStudent.skillId,
+            studentId: skillToStudent.studentId,
+          },
         },
-      },
-    }).skill({});
+      })
+      .skill({});
   }
 
-  @TypeGraphQL.FieldResolver(_type => Student, {
+  @TypeGraphQL.FieldResolver((_type) => Student, {
     nullable: false,
     description: undefined,
   })
-  async student(@TypeGraphQL.Root() skillToStudent: SkillToStudent, @TypeGraphQL.Ctx() ctx: any): Promise<Student> {
-    return ctx.prisma.skillToStudent.findOne({
-      where: {
-        markValue_skillId_studentId: {
-          markValue: skillToStudent.markValue,
-          skillId: skillToStudent.skillId,
-          studentId: skillToStudent.studentId,
+  async student(
+    @TypeGraphQL.Root() skillToStudent: SkillToStudent,
+    @TypeGraphQL.Ctx() ctx: any
+  ): Promise<Student> {
+    return ctx.prisma.skillToStudent
+      .findOne({
+        where: {
+          skillId_studentId: {
+            skillId: skillToStudent.skillId,
+            studentId: skillToStudent.studentId,
+          },
         },
-      },
-    }).student({});
+      })
+      .student({});
   }
 }

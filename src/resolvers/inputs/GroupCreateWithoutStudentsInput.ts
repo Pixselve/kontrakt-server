@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { ContractCreateManyWithoutGroupsInput } from "../inputs/ContractCreateManyWithoutGroupsInput";
 
 @TypeGraphQL.InputType({
@@ -7,15 +6,15 @@ import { ContractCreateManyWithoutGroupsInput } from "../inputs/ContractCreateMa
   description: undefined,
 })
 export class GroupCreateWithoutStudentsInput {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   name!: string;
 
-  @TypeGraphQL.Field(_type => ContractCreateManyWithoutGroupsInput, {
+  @TypeGraphQL.Field((_type) => ContractCreateManyWithoutGroupsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   contracts?: ContractCreateManyWithoutGroupsInput | null | undefined;
 }

@@ -1,17 +1,21 @@
 import * as TypeGraphQL from "type-graphql";
-import { UpdateManyContractArgs } from "./args/UpdateManyContractArgs";
-import { Contract } from "../../../models/Contract";
-import { BatchPayload } from "../../outputs/BatchPayload";
 import { Authorized } from "type-graphql";
 
-@TypeGraphQL.Resolver(_of => Contract)
+import { Contract } from "../../../models/Contract";
+import { UpdateManyContractArgs } from "./args";
+import { BatchPayload } from "../../outputs";
+
+@TypeGraphQL.Resolver((_of) => Contract)
 export class UpdateManyContractResolver {
   @Authorized("TEACHER")
-  @TypeGraphQL.Mutation(_returns => BatchPayload, {
+  @TypeGraphQL.Mutation((_returns) => BatchPayload, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  async updateManyContract(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: UpdateManyContractArgs): Promise<BatchPayload> {
+  async updateManyContract(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: UpdateManyContractArgs
+  ): Promise<BatchPayload> {
     return ctx.prisma.contract.updateMany(args);
   }
 }

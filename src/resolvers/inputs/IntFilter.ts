@@ -1,56 +1,55 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class IntFilter {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   equals?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   not?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => [TypeGraphQL.Int], {
+  @TypeGraphQL.Field((_type) => [TypeGraphQL.Int], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   in?: number[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [TypeGraphQL.Int], {
+  @TypeGraphQL.Field((_type) => [TypeGraphQL.Int], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   notIn?: number[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   lt?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   lte?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   gt?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   gte?: number | null | undefined;
 }

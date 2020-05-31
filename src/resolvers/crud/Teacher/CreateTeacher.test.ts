@@ -11,7 +11,6 @@ const createTeacherMutation = `
     }
 `;
 
-
 beforeAll(async () => {
   await dropDatabase();
 });
@@ -23,15 +22,14 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: "password"
-        }
-      }
+          password: "password",
+        },
+      },
     });
 
     expect(response.data).toBeNull();
     expect(response.errors).toHaveLength(1);
   });
-
 
   it("bad email format", async () => {
     const response = await gCall({
@@ -39,20 +37,19 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "zd",
-          password: "password"
-        }
+          password: "password",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
 
     expect(response.data).toBeNull();
     expect(response.errors).toHaveLength(1);
-
   });
   it("password is empty", async () => {
     const response = await gCall({
@@ -60,20 +57,19 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: ""
-        }
+          password: "",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
 
     expect(response.data).toBeNull();
     expect(response.errors).toHaveLength(1);
-
   });
   it("password length is less than 3", async () => {
     const response = await gCall({
@@ -81,20 +77,19 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: "12"
-        }
+          password: "12",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
 
     expect(response.data).toBeNull();
     expect(response.errors).toHaveLength(1);
-
   });
 
   it("create the teacher", async () => {
@@ -103,25 +98,24 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: "password"
-        }
+          password: "password",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
 
     expect(response).toMatchObject({
       data: {
         createTeacher: {
           email: "email@email.com",
-        }
-      }
+        },
+      },
     });
-
   });
 
   it("don't create teacher with same email", async () => {
@@ -131,15 +125,15 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: "password"
-        }
+          password: "password",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
     //Create the second teacher
     const response = await gCall({
@@ -147,19 +141,18 @@ describe("CreateTeacherResolver", () => {
       variableValues: {
         createTeacherData: {
           email: "email@email.com",
-          password: "password"
-        }
+          password: "password",
+        },
       },
       user: {
         type: "TEACHER",
         teacher: {
-          email: "email@email.com"
-        }
-      }
+          email: "email@email.com",
+        },
+      },
     });
 
     expect(response.data).toBeNull();
     expect(response.errors).toHaveLength(1);
-
   });
 });

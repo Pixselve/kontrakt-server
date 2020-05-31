@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { OrderByArg } from "../../enums/OrderByArg";
 
 @TypeGraphQL.InputType({
@@ -7,27 +6,27 @@ import { OrderByArg } from "../../enums/OrderByArg";
   description: undefined,
 })
 export class ContractOrderByInput {
-  @TypeGraphQL.Field(_type => OrderByArg, {
+  @TypeGraphQL.Field((_type) => OrderByArg, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   end?: keyof typeof OrderByArg | null | undefined;
 
-  @TypeGraphQL.Field(_type => OrderByArg, {
+  @TypeGraphQL.Field((_type) => OrderByArg, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   id?: keyof typeof OrderByArg | null | undefined;
 
-  @TypeGraphQL.Field(_type => OrderByArg, {
+  @TypeGraphQL.Field((_type) => OrderByArg, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   name?: keyof typeof OrderByArg | null | undefined;
 
-  @TypeGraphQL.Field(_type => OrderByArg, {
+  @TypeGraphQL.Field((_type) => OrderByArg, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   start?: keyof typeof OrderByArg | null | undefined;
 }

@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { ContractUpdateManyWithoutGroupsInput } from "../inputs/ContractUpdateManyWithoutGroupsInput";
 import { StudentUpdateManyWithoutGroupsInput } from "../inputs/StudentUpdateManyWithoutGroupsInput";
 
@@ -8,27 +7,27 @@ import { StudentUpdateManyWithoutGroupsInput } from "../inputs/StudentUpdateMany
   description: undefined,
 })
 export class GroupUpdateInput {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   id?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   name?: string | null | undefined;
 
-  @TypeGraphQL.Field(_type => ContractUpdateManyWithoutGroupsInput, {
+  @TypeGraphQL.Field((_type) => ContractUpdateManyWithoutGroupsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   contracts?: ContractUpdateManyWithoutGroupsInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => StudentUpdateManyWithoutGroupsInput, {
+  @TypeGraphQL.Field((_type) => StudentUpdateManyWithoutGroupsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   students?: StudentUpdateManyWithoutGroupsInput | null | undefined;
 }

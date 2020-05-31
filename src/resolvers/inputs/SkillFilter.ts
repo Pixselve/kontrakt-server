@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { SkillWhereInput } from "../inputs/SkillWhereInput";
 
 @TypeGraphQL.InputType({
@@ -7,21 +6,21 @@ import { SkillWhereInput } from "../inputs/SkillWhereInput";
   description: undefined,
 })
 export class SkillFilter {
-  @TypeGraphQL.Field(_type => SkillWhereInput, {
+  @TypeGraphQL.Field((_type) => SkillWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   every?: SkillWhereInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillWhereInput, {
+  @TypeGraphQL.Field((_type) => SkillWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   some?: SkillWhereInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillWhereInput, {
+  @TypeGraphQL.Field((_type) => SkillWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   none?: SkillWhereInput | null | undefined;
 }

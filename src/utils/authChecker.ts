@@ -6,7 +6,6 @@ export const customAuthChecker: AuthChecker<Context> = async (
   { root, args, context, info },
   roles
 ) => {
-
   if (context.user && context.user.type) {
     if (
       roles.includes("SELF_STUDENT") &&

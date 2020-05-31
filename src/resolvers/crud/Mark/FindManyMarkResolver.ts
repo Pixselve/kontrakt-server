@@ -1,14 +1,18 @@
 import * as TypeGraphQL from "type-graphql";
-import { FindManyMarkArgs } from "./args/FindManyMarkArgs";
-import { Mark } from "../../../models/Mark";
 
-@TypeGraphQL.Resolver(_of => Mark)
+import { Mark } from "../../../models/Mark";
+import { FindManyMarkArgs } from "./args";
+
+@TypeGraphQL.Resolver((_of) => Mark)
 export class FindManyMarkResolver {
-  @TypeGraphQL.Query(_returns => [Mark], {
+  @TypeGraphQL.Query((_returns) => [Mark], {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  async marks(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: FindManyMarkArgs): Promise<Mark[]> {
+  async marks(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: FindManyMarkArgs
+  ): Promise<Mark[]> {
     return ctx.prisma.mark.findMany(args);
   }
 }

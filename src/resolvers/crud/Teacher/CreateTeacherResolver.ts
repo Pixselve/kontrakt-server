@@ -2,7 +2,7 @@ import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 import { Teacher } from "../../../models";
 import { hash } from "bcryptjs";
 import { Context } from "../../../index";
-import { TeacherCreateInput } from "../../inputs";
+import { TeacherCreateInput } from "../../inputs/TeacherCreateInput";
 
 @Resolver((_of) => Teacher)
 export class CreateTeacherResolver {

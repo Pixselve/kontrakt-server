@@ -1,29 +1,30 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
-import { SkillOrderByInput } from "../../../inputs/SkillOrderByInput";
-import { SkillWhereInput } from "../../../inputs/SkillWhereInput";
-import { SkillWhereUniqueInput } from "../../../inputs/SkillWhereUniqueInput";
+import {
+  SkillOrderByInput,
+  SkillWhereInput,
+  SkillWhereUniqueInput,
+} from "../../../inputs";
 
 @TypeGraphQL.ArgsType()
 export class ContractSkillsArgs {
-  @TypeGraphQL.Field(_type => SkillWhereInput, { nullable: true })
+  @TypeGraphQL.Field((_type) => SkillWhereInput, { nullable: true })
   where?: SkillWhereInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillOrderByInput, { nullable: true })
+  @TypeGraphQL.Field((_type) => SkillOrderByInput, { nullable: true })
   orderBy?: SkillOrderByInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, { nullable: true })
   skip?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillWhereUniqueInput, { nullable: true })
+  @TypeGraphQL.Field((_type) => SkillWhereUniqueInput, { nullable: true })
   after?: SkillWhereUniqueInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => SkillWhereUniqueInput, { nullable: true })
+  @TypeGraphQL.Field((_type) => SkillWhereUniqueInput, { nullable: true })
   before?: SkillWhereUniqueInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, { nullable: true })
   first?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, { nullable: true })
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, { nullable: true })
   last?: number | null | undefined;
 }

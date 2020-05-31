@@ -4,19 +4,18 @@ import { Student } from "./Student";
 
 @ObjectType()
 export class AuthPayload {
-  @Field(type => String)
+  @Field((type) => String)
   token!: string;
 
-  @Field(type => Teacher)
+  @Field((type) => Teacher)
   teacher!: Teacher;
-
 }
 
 @ObjectType()
 export class StudentAuthPayload {
-  @Field(type => String)
+  @Field((type) => String)
   token!: string;
 
-  @Field(type => Student)
+  @Field((type) => Student)
   student!: Student;
 }

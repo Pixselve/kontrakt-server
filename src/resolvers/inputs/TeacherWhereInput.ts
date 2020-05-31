@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { StringFilter } from "../inputs/StringFilter";
 
 @TypeGraphQL.InputType({
@@ -7,33 +6,33 @@ import { StringFilter } from "../inputs/StringFilter";
   description: undefined,
 })
 export class TeacherWhereInput {
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field((_type) => StringFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   email?: StringFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => StringFilter, {
+  @TypeGraphQL.Field((_type) => StringFilter, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   password?: StringFilter | null | undefined;
 
-  @TypeGraphQL.Field(_type => [TeacherWhereInput], {
+  @TypeGraphQL.Field((_type) => [TeacherWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   AND?: TeacherWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [TeacherWhereInput], {
+  @TypeGraphQL.Field((_type) => [TeacherWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   OR?: TeacherWhereInput[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [TeacherWhereInput], {
+  @TypeGraphQL.Field((_type) => [TeacherWhereInput], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   NOT?: TeacherWhereInput[] | null | undefined;
 }

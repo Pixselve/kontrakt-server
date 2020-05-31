@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { AggregateSkillToStudentCountArgs } from "./args/AggregateSkillToStudentCountArgs";
 
 @TypeGraphQL.ObjectType({
@@ -7,11 +6,14 @@ import { AggregateSkillToStudentCountArgs } from "./args/AggregateSkillToStudent
   description: undefined,
 })
 export class AggregateSkillToStudent {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  count(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: AggregateSkillToStudentCountArgs) {
+  count(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: AggregateSkillToStudentCountArgs
+  ) {
     return ctx.prisma.skillToStudent.count(args);
   }
 }

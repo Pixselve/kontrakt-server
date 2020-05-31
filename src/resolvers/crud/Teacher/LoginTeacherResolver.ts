@@ -4,7 +4,7 @@ import { Context } from "../../../index";
 import { AuthenticationError } from "apollo-server";
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
-import { CreateTeacherArgs } from "./args/CreateTeacherArgs";
+import { CreateTeacherArgs } from "./args";
 
 @Resolver()
 export class LoginTeacherResolver {

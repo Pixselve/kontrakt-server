@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupWhereInput } from "../inputs/GroupWhereInput";
 
 @TypeGraphQL.InputType({
@@ -7,21 +6,21 @@ import { GroupWhereInput } from "../inputs/GroupWhereInput";
   description: undefined,
 })
 export class GroupFilter {
-  @TypeGraphQL.Field(_type => GroupWhereInput, {
+  @TypeGraphQL.Field((_type) => GroupWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   every?: GroupWhereInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => GroupWhereInput, {
+  @TypeGraphQL.Field((_type) => GroupWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   some?: GroupWhereInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => GroupWhereInput, {
+  @TypeGraphQL.Field((_type) => GroupWhereInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   none?: GroupWhereInput | null | undefined;
 }

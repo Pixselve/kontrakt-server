@@ -1,56 +1,55 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
   description: undefined,
 })
 export class DateTimeFilter {
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   equals?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   not?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => [Date], {
+  @TypeGraphQL.Field((_type) => [Date], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   in?: Date[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => [Date], {
+  @TypeGraphQL.Field((_type) => [Date], {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   notIn?: Date[] | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   lt?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   lte?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   gt?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   gte?: Date | null | undefined;
 }

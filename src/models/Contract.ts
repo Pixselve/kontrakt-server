@@ -4,7 +4,6 @@ import { Skill } from "./Skill";
 import { Group } from "./Group";
 import "reflect-metadata";
 
-
 @ObjectType({
   isAbstract: true,
 })

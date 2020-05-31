@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupUpdateManyWithoutContractsInput } from "../inputs/GroupUpdateManyWithoutContractsInput";
 
 @TypeGraphQL.InputType({
@@ -7,33 +6,33 @@ import { GroupUpdateManyWithoutContractsInput } from "../inputs/GroupUpdateManyW
   description: undefined,
 })
 export class ContractUpdateWithoutSkillsDataInput {
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   end?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   id?: number | null | undefined;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   name?: string | null | undefined;
 
-  @TypeGraphQL.Field(_type => Date, {
+  @TypeGraphQL.Field((_type) => Date, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   start?: Date | null | undefined;
 
-  @TypeGraphQL.Field(_type => GroupUpdateManyWithoutContractsInput, {
+  @TypeGraphQL.Field((_type) => GroupUpdateManyWithoutContractsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   groups?: GroupUpdateManyWithoutContractsInput | null | undefined;
 }

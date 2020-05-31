@@ -1,4 +1,3 @@
-import { gCall } from "../../../test-utils/gCall";
 import { dropDatabase } from "../../../utils/dropDatabase";
 
 const deleteTeacherMutation = `
@@ -10,11 +9,8 @@ const deleteTeacherMutation = `
   }
 `;
 
-
 beforeAll(async () => {
   await dropDatabase();
 });
 
-describe("DeleteTeacher", () => {
-
-});
+describe("DeleteTeacher", () => {});

@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { StudentCreateWithoutSkillsToStudentInput } from "../inputs/StudentCreateWithoutSkillsToStudentInput";
 import { StudentUpdateWithoutSkillsToStudentDataInput } from "../inputs/StudentUpdateWithoutSkillsToStudentDataInput";
 import { StudentUpsertWithoutSkillsToStudentInput } from "../inputs/StudentUpsertWithoutSkillsToStudentInput";
@@ -10,27 +9,27 @@ import { StudentWhereUniqueInput } from "../inputs/StudentWhereUniqueInput";
   description: undefined,
 })
 export class StudentUpdateOneRequiredWithoutSkillsToStudentInput {
-  @TypeGraphQL.Field(_type => StudentCreateWithoutSkillsToStudentInput, {
+  @TypeGraphQL.Field((_type) => StudentCreateWithoutSkillsToStudentInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: StudentCreateWithoutSkillsToStudentInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => StudentWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => StudentWhereUniqueInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: StudentWhereUniqueInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => StudentUpdateWithoutSkillsToStudentDataInput, {
+  @TypeGraphQL.Field((_type) => StudentUpdateWithoutSkillsToStudentDataInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   update?: StudentUpdateWithoutSkillsToStudentDataInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => StudentUpsertWithoutSkillsToStudentInput, {
+  @TypeGraphQL.Field((_type) => StudentUpsertWithoutSkillsToStudentInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   upsert?: StudentUpsertWithoutSkillsToStudentInput | null | undefined;
 }

@@ -1,12 +1,12 @@
 import * as TypeGraphQL from "type-graphql";
 import { SkillToStudent } from "../../../models/SkillToStudent";
-import { AggregateSkillToStudent } from "../../outputs/AggregateSkillToStudent";
+import { AggregateSkillToStudent } from "../../outputs";
 
-@TypeGraphQL.Resolver(_of => SkillToStudent)
+@TypeGraphQL.Resolver((_of) => SkillToStudent)
 export class AggregateSkillToStudentResolver {
-  @TypeGraphQL.Query(_returns => AggregateSkillToStudent, {
+  @TypeGraphQL.Query((_returns) => AggregateSkillToStudent, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   async aggregateSkillToStudent(): Promise<AggregateSkillToStudent> {
     return new AggregateSkillToStudent();

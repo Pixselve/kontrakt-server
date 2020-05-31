@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { ContractCreateWithoutSkillsInput } from "../inputs/ContractCreateWithoutSkillsInput";
 import { ContractUpdateWithoutSkillsDataInput } from "../inputs/ContractUpdateWithoutSkillsDataInput";
 import { ContractUpsertWithoutSkillsInput } from "../inputs/ContractUpsertWithoutSkillsInput";
@@ -10,27 +9,27 @@ import { ContractWhereUniqueInput } from "../inputs/ContractWhereUniqueInput";
   description: undefined,
 })
 export class ContractUpdateOneRequiredWithoutSkillsInput {
-  @TypeGraphQL.Field(_type => ContractCreateWithoutSkillsInput, {
+  @TypeGraphQL.Field((_type) => ContractCreateWithoutSkillsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   create?: ContractCreateWithoutSkillsInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => ContractWhereUniqueInput, {
+  @TypeGraphQL.Field((_type) => ContractWhereUniqueInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   connect?: ContractWhereUniqueInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => ContractUpdateWithoutSkillsDataInput, {
+  @TypeGraphQL.Field((_type) => ContractUpdateWithoutSkillsDataInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   update?: ContractUpdateWithoutSkillsDataInput | null | undefined;
 
-  @TypeGraphQL.Field(_type => ContractUpsertWithoutSkillsInput, {
+  @TypeGraphQL.Field((_type) => ContractUpsertWithoutSkillsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   upsert?: ContractUpsertWithoutSkillsInput | null | undefined;
 }

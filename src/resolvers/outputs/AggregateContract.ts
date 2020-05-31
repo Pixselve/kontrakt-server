@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { AggregateContractCountArgs } from "./args/AggregateContractCountArgs";
 
 @TypeGraphQL.ObjectType({
@@ -7,11 +6,14 @@ import { AggregateContractCountArgs } from "./args/AggregateContractCountArgs";
   description: undefined,
 })
 export class AggregateContract {
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
-  count(@TypeGraphQL.Ctx() ctx: any, @TypeGraphQL.Args() args: AggregateContractCountArgs) {
+  count(
+    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Args() args: AggregateContractCountArgs
+  ) {
     return ctx.prisma.contract.count(args);
   }
 }

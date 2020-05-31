@@ -1,5 +1,4 @@
 import * as TypeGraphQL from "type-graphql";
-import GraphQLJSON from "graphql-type-json";
 import { GroupCreateManyWithoutStudentsInput } from "../inputs/GroupCreateManyWithoutStudentsInput";
 
 @TypeGraphQL.InputType({
@@ -7,27 +6,27 @@ import { GroupCreateManyWithoutStudentsInput } from "../inputs/GroupCreateManyWi
   description: undefined,
 })
 export class StudentCreateWithoutSkillsToStudentInput {
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   firstName!: string;
 
-  @TypeGraphQL.Field(_type => String, {
+  @TypeGraphQL.Field((_type) => String, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   lastName!: string;
 
-  @TypeGraphQL.Field(_type => TypeGraphQL.Int, {
+  @TypeGraphQL.Field((_type) => TypeGraphQL.Int, {
     nullable: false,
-    description: undefined
+    description: undefined,
   })
   username!: number;
 
-  @TypeGraphQL.Field(_type => GroupCreateManyWithoutStudentsInput, {
+  @TypeGraphQL.Field((_type) => GroupCreateManyWithoutStudentsInput, {
     nullable: true,
-    description: undefined
+    description: undefined,
   })
   groups?: GroupCreateManyWithoutStudentsInput | null | undefined;
 }
