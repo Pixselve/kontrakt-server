@@ -1,9 +1,8 @@
 import * as TypeGraphQL from "type-graphql";
 import { Group } from "../../../models/Group";
-import { SkillToStudent } from "../../../models/SkillToStudent";
-import { Student } from "../../../models/Student";
-import { StudentGroupsArgs } from "./args/StudentGroupsArgs";
-import { StudentSkillsToStudentArgs } from "./args/StudentSkillsToStudentArgs";
+import { SkillToStudent, Student } from "../../../models";
+import { StudentGroupsArgs, StudentSkillsToStudentArgs } from "./args";
+import { Context } from "../../../index";
 
 @TypeGraphQL.Resolver((_of) => Student)
 export class StudentRelationsResolver {
@@ -13,7 +12,7 @@ export class StudentRelationsResolver {
   })
   async skillsToStudent(
     @TypeGraphQL.Root() student: Student,
-    @TypeGraphQL.Ctx() ctx: any,
+    @TypeGraphQL.Ctx() ctx: Context,
     @TypeGraphQL.Args() args: StudentSkillsToStudentArgs
   ): Promise<SkillToStudent[] | null | undefined> {
     return ctx.prisma.student
@@ -22,7 +21,9 @@ export class StudentRelationsResolver {
           id: student.id,
         },
       })
+      // @ts-ignore
       .skillsToStudent(args);
+
   }
 
   @TypeGraphQL.FieldResolver((_type) => [Group], {
