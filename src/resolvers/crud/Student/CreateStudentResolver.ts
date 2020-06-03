@@ -1,8 +1,8 @@
-import { Args, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
+import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 
 import { Student } from "../../../models";
 import { Context } from "../../../index";
-import { CreateStudentArgs } from "./args";
+import { StudentCreateInput } from "../../inputs";
 
 @Resolver((_of) => Student)
 export class CreateStudentResolver {
@@ -13,7 +13,7 @@ export class CreateStudentResolver {
   })
   async createStudent(
     @Ctx() { prisma }: Context,
-    @Args() { data }: CreateStudentArgs
+    @Arg("data") data: StudentCreateInput
   ): Promise<Student> {
     //  Generate a 6 digit username
     let username = generateSixDigitNumber();
@@ -21,7 +21,7 @@ export class CreateStudentResolver {
     while (
       (await prisma.student.findMany({ where: { username } })).length > 0 &&
       i < 10
-    ) {
+      ) {
       username = generateSixDigitNumber();
       i++;
     }
