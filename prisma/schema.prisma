@@ -32,6 +32,7 @@ model Mark {
   text             String
   value            String           @id
   skillsToStudents SkillToStudent[]
+  icon             String @unique
 }
 
 model Skill {

@@ -3,24 +3,25 @@ import { Mark } from "../../../models/Mark";
 import { Skill } from "../../../models/Skill";
 import { SkillToStudent } from "../../../models/SkillToStudent";
 import { Student } from "../../../models/Student";
+import { Context } from "../../../index";
 
 @TypeGraphQL.Resolver((_of) => SkillToStudent)
 export class SkillToStudentRelationsResolver {
   @TypeGraphQL.FieldResolver((_type) => Mark, {
-    nullable: false,
+    nullable: true,
     description: undefined,
   })
   async mark(
     @TypeGraphQL.Root() skillToStudent: SkillToStudent,
-    @TypeGraphQL.Ctx() ctx: any
-  ): Promise<Mark> {
+    @TypeGraphQL.Ctx() ctx: Context
+  ): Promise<Mark | null> {
     return ctx.prisma.skillToStudent
       .findOne({
         where: {
-          skillId_studentId: {
+          studentId_skillId: {
             skillId: skillToStudent.skillId,
-            studentId: skillToStudent.studentId,
-          },
+            studentId: skillToStudent.studentId
+          }
         },
       })
       .mark({});
@@ -37,7 +38,7 @@ export class SkillToStudentRelationsResolver {
     return ctx.prisma.skillToStudent
       .findOne({
         where: {
-          skillId_studentId: {
+          studentId_skillId: {
             skillId: skillToStudent.skillId,
             studentId: skillToStudent.studentId,
           },
@@ -57,7 +58,7 @@ export class SkillToStudentRelationsResolver {
     return ctx.prisma.skillToStudent
       .findOne({
         where: {
-          skillId_studentId: {
+          studentId_skillId: {
             skillId: skillToStudent.skillId,
             studentId: skillToStudent.studentId,
           },

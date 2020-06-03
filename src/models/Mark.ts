@@ -14,5 +14,8 @@ export class Mark {
   @Field((_type) => String)
   value!: string;
 
+  @Field((_type) => String)
+  icon!: string;
+
   skillsToStudents?: SkillToStudent[] | null | undefined;
 }
