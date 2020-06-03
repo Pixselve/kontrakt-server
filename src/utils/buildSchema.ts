@@ -20,7 +20,7 @@ import { DeleteSkillResolver } from "../resolvers/crud/Skill/DeleteSkillResolver
 import { UpdateSkillResolver } from "../resolvers/crud/Skill/UpdateSkillResolver";
 import { CreateSkillResolver } from "../resolvers/crud/Skill/CreateSkillResolver";
 import {
-  ContractRelationsResolver,
+  ContractRelationsResolver, SkillRelationsResolver,
   SkillToStudentRelationsResolver,
   StudentRelationsResolver,
 } from "../resolvers/relations";
@@ -29,6 +29,12 @@ import { CreateGroupResolver } from "../resolvers/crud/Group/CreateGroupResolver
 import { FindManyGroupResolver } from "../resolvers/crud/Group/FindManyGroupResolver";
 import { UpdateContractResolver } from "../resolvers/crud/Contract/UpdateContractResolver";
 import { UpdateStudentResolver } from "../resolvers/crud/Student/UpdateStudentResolver";
+import { DeleteGroupResolver } from "../resolvers/crud/Group/DeleteGroupResolver";
+import { FindManyMarkResolver } from "../resolvers/crud/Mark/FindManyMarkResolver";
+import { FindOneMarkResolver } from "../resolvers/crud/Mark/FindOneMarkResolver";
+import { CreateMarkResolver } from "../resolvers/crud/Mark/CreateMarkResolver";
+import { DeleteMarkResolver } from "../resolvers/crud/Mark/DeleteMarkResolver";
+import { UpdateMarkResolver } from "../resolvers/crud/Mark/UpdateMarkResolver";
 
 export default async (): Promise<GraphQLSchema> =>
   buildSchema({
@@ -58,7 +64,14 @@ export default async (): Promise<GraphQLSchema> =>
       CreateGroupResolver,
       FindManyGroupResolver,
       UpdateContractResolver,
-      UpdateStudentResolver
+      UpdateStudentResolver,
+      DeleteGroupResolver,
+      SkillRelationsResolver,
+      FindManyMarkResolver,
+      FindOneMarkResolver,
+      CreateMarkResolver,
+      DeleteMarkResolver,
+      UpdateMarkResolver
     ],
     validate: true,
     authChecker: customAuthChecker,
