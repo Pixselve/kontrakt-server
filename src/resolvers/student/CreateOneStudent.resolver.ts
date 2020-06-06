@@ -1,7 +1,7 @@
 import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 import { Student } from "../../models/Student";
 import { Context } from "../../index";
-import { CreateOneStudentInput } from "./input/CreateOneStudentInput";
+import { CreateOneStudentInput } from "./input/CreateOneStudent.input";
 
 @Resolver(Student)
 export default class CreateOneStudentResolver {
