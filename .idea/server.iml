@@ -5,7 +5,9 @@
       <excludeFolder url="file://$MODULE_DIR$/dist" />
       <excludeFolder url="file://$MODULE_DIR$/prisma/.prisma" />
       <excludeFolder url="file://$MODULE_DIR$/prisma/Studio" />
+      <excludeFolder url="file://$MODULE_DIR$/src/generated" />
       <excludeFolder url="file://$MODULE_DIR$/src/resolversBACK" />
+      <excludeFolder url="file://$MODULE_DIR$/srcBACK" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

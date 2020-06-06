@@ -1,5 +1,12 @@
 scalar DateTime
 
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+
 type Contract {
   id: Int!
   name: String!
@@ -7,6 +14,8 @@ type Contract {
   end: DateTime!
   skills: [Skill!]!
   groups: [Group!]!
+  rgb: String!
+  archived: Boolean!
 }
 
 type Skill {
@@ -94,6 +103,7 @@ input CreateOneContractInput {
   start: DateTime!
   end: DateTime!
   skillNames: [String!]!
+  rgb: String!
 }
 
 input CreateOneSkillInput {
@@ -108,7 +118,7 @@ type Mutation {
   createOneStudent(student: CreateOneStudentInput!): Student!
   deleteOneStudent(id: Int!): Student!
   createOneContract(contract: CreateOneContractInput!): Contract!
-  deleteOneContract(id: Int!): Contract!
+  archiveOneContract(id: Int!): Contract!
   updateStudentGroups(groupIds: [Int!]! = []): Student!
   createOneSkill(skill: CreateOneSkillInput!): Skill!
 }

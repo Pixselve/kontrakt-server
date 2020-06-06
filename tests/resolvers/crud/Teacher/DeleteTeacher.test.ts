@@ -1,4 +1,4 @@
-import { dropDatabase } from "../../../../src/utils/dropDatabase";
+import { dropDatabase } from "../../../../srcBACK/utils/dropDatabase";
 
 
 const deleteTeacherMutation = `

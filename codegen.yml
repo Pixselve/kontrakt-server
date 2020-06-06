@@ -1,0 +1,9 @@
+overwrite: true
+schema: "schema-test.graphql"
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript-type-graphql"
+    config:
+      scalars:
+        DateTime: Date
