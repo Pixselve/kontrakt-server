@@ -3,7 +3,7 @@ import { Student } from "../../models/Student";
 import { Context } from "../../index";
 
 @Resolver(Student)
-export default class DeleteOneStudentResolver {
+export default class FindOneStudentResolver {
   @Query((returns) => Student)
   async student(
     @Ctx() { prisma }: Context,
