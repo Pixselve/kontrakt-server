@@ -1,26 +1,34 @@
-import * as TypeGraphQL from "type-graphql";
-import { Field, ObjectType } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
+
+import { Scalars } from "../utils/types";
 import { Skill } from "./Skill";
 import { Group } from "./Group";
-import "reflect-metadata";
 
-@ObjectType({
-  isAbstract: true,
-})
+@ObjectType()
 export class Contract {
-  @Field((_type) => Date)
-  end!: Date;
+  __typename?: "Contract";
 
-  @Field((_type) => TypeGraphQL.Int)
-  id!: number;
+  @Field((type) => Int)
+  id!: Scalars["Int"];
 
-  @Field((_type) => String)
-  name!: string;
+  @Field((type) => String)
+  name!: Scalars["String"];
 
-  @Field((_type) => Date)
-  start!: Date;
+  @Field((type) => Date)
+  start!: Scalars["DateTime"];
 
-  skills?: Skill[] | null | undefined;
+  @Field((type) => Date)
+  end!: Scalars["DateTime"];
 
-  groups?: Group[] | null | undefined;
+  @Field((type) => [Skill])
+  skills!: Array<Skill>;
+
+  @Field((type) => [Group])
+  groups!: Array<Group>;
+
+  @Field((type) => String)
+  rgb!: Scalars["String"];
+
+  @Field((type) => Boolean)
+  archived!: Scalars["Boolean"];
 }

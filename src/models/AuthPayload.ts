@@ -1,21 +1,20 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, InterfaceType, ObjectType } from "type-graphql";
+import { FixDecorator, Scalars } from "../utils/types";
 import { Teacher } from "./Teacher";
-import { Student } from "./Student";
 
-@ObjectType()
-export class AuthPayload {
+@InterfaceType()
+export abstract class AuthPayload {
   @Field((type) => String)
-  token!: string;
-
-  @Field((type) => Teacher)
-  teacher!: Teacher;
+  token!: Scalars["String"];
 }
 
-@ObjectType()
-export class StudentAuthPayload {
-  @Field((type) => String)
-  token!: string;
+@ObjectType({ implements: AuthPayload })
+export class AuthPayloadTeacher extends AuthPayload {
+  __typename?: "AuthPayloadTeacher";
 
-  @Field((type) => Student)
-  student!: Student;
+  @Field((type) => String)
+  token!: Scalars["String"];
+
+  @Field((type) => Teacher)
+  teacher!: FixDecorator<Teacher>;
 }

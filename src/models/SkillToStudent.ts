@@ -1,24 +1,28 @@
 import { Field, Int, ObjectType } from "type-graphql";
+import { FixDecorator, Scalars } from "../utils/types";
+import { Mark } from "./Mark";
 import { Skill } from "./Skill";
 import { Student } from "./Student";
-import { Mark } from "./Mark";
 
-@ObjectType({
-  isAbstract: true,
-})
+@ObjectType()
 export class SkillToStudent {
-  @Field((_type) => String)
-  markValue!: string;
+  __typename?: 'SkillToStudent';
 
-  @Field((_type) => Int)
-  skillId!: number;
+  @Field(type => String)
+  markValue!: Scalars['String'];
 
-  @Field((_type) => Int)
-  studentId!: number;
+  @Field(type => Int)
+  skillId!: Scalars['Int'];
 
-  mark?: Mark;
+  @Field(type => Int)
+  studentId!: Scalars['Int'];
 
-  skill?: Skill;
 
-  student?: Student;
+  mark?: FixDecorator<Mark>;
+
+
+  skill?: FixDecorator<Skill>;
+
+
+  student?: FixDecorator<Student>;
 }

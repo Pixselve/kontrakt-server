@@ -1,77 +1,25 @@
 import { buildSchema } from "type-graphql";
-import { customAuthChecker } from "./authChecker";
 import { GraphQLSchema } from "graphql";
-import { CreateTeacherResolver } from "../resolvers/crud/Teacher/CreateTeacherResolver";
-import { FindOneTeacherResolver } from "../resolvers/crud/Teacher/FindOneTeacherResolver";
-import { FindManyTeacherResolver } from "../resolvers/crud/Teacher/FindManyTeacherResolver";
-import { DeleteTeacherResolver } from "../resolvers/crud/Teacher/DeleteTeacherResolver";
-import { LoginStudentResolver } from "../resolvers/crud/Student/LoginStudentResolver";
-import { LoginTeacherResolver } from "../resolvers/crud/Teacher/LoginTeacherResolver";
-import { FindManyStudentResolver } from "../resolvers/crud/Student/FindManyStudentResolver";
-import { FindOneStudentResolver } from "../resolvers/crud/Student/FindOneStudentResolver";
-import { FindManyContractResolver } from "../resolvers/crud/Contract/FindManyContractResolver";
-import { FindOneContractResolver } from "../resolvers/crud/Contract/FindOneContractResolver";
-import { CreateStudentResolver } from "../resolvers/crud/Student/CreateStudentResolver";
-import { CreateContractResolver } from "../resolvers/crud/Contract/CreateContractResolver";
-import { DeleteContractResolver } from "../resolvers/crud/Contract/DeleteContractResolver";
-import { DeleteStudentResolver } from "../resolvers/crud/Student/DeleteStudentResolver";
-import { UpsertSkillToStudentResolver } from "../resolvers/crud/SkillToStudent/UpsertSkillToStudentResolver";
-import { DeleteSkillResolver } from "../resolvers/crud/Skill/DeleteSkillResolver";
-import { UpdateSkillResolver } from "../resolvers/crud/Skill/UpdateSkillResolver";
-import { CreateSkillResolver } from "../resolvers/crud/Skill/CreateSkillResolver";
-import {
-  ContractRelationsResolver, SkillRelationsResolver,
-  SkillToStudentRelationsResolver,
-  StudentRelationsResolver,
-} from "../resolvers/relations";
-import { MeResolver } from "../resolvers/crud/User/Me.resolver";
-import { CreateGroupResolver } from "../resolvers/crud/Group/CreateGroupResolver";
-import { FindManyGroupResolver } from "../resolvers/crud/Group/FindManyGroupResolver";
-import { UpdateContractResolver } from "../resolvers/crud/Contract/UpdateContractResolver";
-import { UpdateStudentResolver } from "../resolvers/crud/Student/UpdateStudentResolver";
-import { DeleteGroupResolver } from "../resolvers/crud/Group/DeleteGroupResolver";
-import { FindManyMarkResolver } from "../resolvers/crud/Mark/FindManyMarkResolver";
-import { FindOneMarkResolver } from "../resolvers/crud/Mark/FindOneMarkResolver";
-import { CreateMarkResolver } from "../resolvers/crud/Mark/CreateMarkResolver";
-import { DeleteMarkResolver } from "../resolvers/crud/Mark/DeleteMarkResolver";
-import { UpdateMarkResolver } from "../resolvers/crud/Mark/UpdateMarkResolver";
+import { customAuthChecker } from "./authCheker";
+
+import FindManyGroup from "../resolvers/groups/FindManyGroup.resolver";
+import FindManyStudent from "../resolvers/student/FindManyStudent.resolver";
+import CreateOneTeacherResolver from "../resolvers/teacher/CreateOneTeacher.resolver";
+import DeleteOneTeacherResolver from "../resolvers/teacher/DeleteOneTeacher.resolver";
+import LoginTeacherResolver from "../resolvers/teacher/LoginTeacher.resolver";
+import FindManyTeacherResolver from "../resolvers/teacher/FindManyTeacher.resolver";
+import CreateOneStudentResolver from "../resolvers/student/CreateOneStudent.resolver";
 
 export default async (): Promise<GraphQLSchema> =>
   buildSchema({
     resolvers: [
-      CreateTeacherResolver,
-      FindOneTeacherResolver,
-      FindManyTeacherResolver,
-      DeleteTeacherResolver,
-      LoginStudentResolver,
+      CreateOneTeacherResolver,
+      DeleteOneTeacherResolver,
       LoginTeacherResolver,
-      FindManyStudentResolver,
-      FindOneStudentResolver,
-      StudentRelationsResolver,
-      ContractRelationsResolver,
-      FindManyContractResolver,
-      FindOneContractResolver,
-      CreateStudentResolver,
-      CreateContractResolver,
-      DeleteContractResolver,
-      DeleteStudentResolver,
-      UpsertSkillToStudentResolver,
-      DeleteSkillResolver,
-      UpdateSkillResolver,
-      CreateSkillResolver,
-      SkillToStudentRelationsResolver,
-      MeResolver,
-      CreateGroupResolver,
-      FindManyGroupResolver,
-      UpdateContractResolver,
-      UpdateStudentResolver,
-      DeleteGroupResolver,
-      SkillRelationsResolver,
-      FindManyMarkResolver,
-      FindOneMarkResolver,
-      CreateMarkResolver,
-      DeleteMarkResolver,
-      UpdateMarkResolver
+      FindManyTeacherResolver,
+      FindManyStudent,
+      FindManyGroup,
+      CreateOneStudentResolver
     ],
     validate: true,
     authChecker: customAuthChecker,

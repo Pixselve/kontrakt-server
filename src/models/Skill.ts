@@ -1,21 +1,24 @@
 import { Field, Int, ObjectType } from "type-graphql";
+import { FixDecorator, Scalars } from "../utils/types";
 import { Contract } from "./Contract";
 import { SkillToStudent } from "./SkillToStudent";
 
-@ObjectType({
-  isAbstract: true,
-})
+@ObjectType()
 export class Skill {
-  @Field((_type) => Int, {})
-  contractId!: number;
+  __typename?: "Skill";
 
-  @Field((_type) => Int, {})
-  id!: number;
+  @Field((type) => Int)
+  contractId!: Scalars["Int"];
 
-  @Field((_type) => String, {})
-  name!: string;
+  @Field((type) => Int)
+  id!: Scalars["Int"];
 
-  contract?: Contract;
+  @Field((type) => String)
+  name!: Scalars["String"];
 
-  skillToStudents?: SkillToStudent[] | null | undefined;
+
+  contract?: FixDecorator<Contract>;
+
+
+  skillToStudents?: Array<SkillToStudent>;
 }

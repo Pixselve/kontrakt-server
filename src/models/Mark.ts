@@ -1,21 +1,24 @@
 import { Field, ObjectType } from "type-graphql";
+import { Scalars } from "../utils/types";
 import { SkillToStudent } from "./SkillToStudent";
 
-@ObjectType({
-  isAbstract: true,
-})
+
+@ObjectType()
 export class Mark {
-  @Field((_type) => String)
-  rgb!: string;
+  __typename?: "Mark";
 
-  @Field((_type) => String)
-  text!: string;
+  @Field((type) => String)
+  rgb!: Scalars["String"];
 
-  @Field((_type) => String)
-  value!: string;
+  @Field((type) => String)
+  text!: Scalars["String"];
 
-  @Field((_type) => String)
-  icon!: string;
+  @Field((type) => String)
+  value!: Scalars["String"];
 
-  skillsToStudents?: SkillToStudent[] | null | undefined;
-}
+  @Field((type) => [SkillToStudent])
+  skillsToStudents!: Array<SkillToStudent>;
+
+  @Field((type) => String)
+  icon!: Scalars["String"];
+};

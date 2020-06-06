@@ -1,12 +1,13 @@
 import { Field, ObjectType } from "type-graphql";
+import { Scalars } from "../utils/types";
 
-@ObjectType({
-  isAbstract: true,
-})
+@ObjectType()
 export class Teacher {
-  @Field((_type) => String)
-  email!: string;
+  __typename?: "Teacher";
 
-  @Field((_type) => String)
-  password!: string;
+  @Field((type) => String)
+  email!: Scalars["String"];
+
+  @Field((type) => String)
+  password!: Scalars["String"];
 }
