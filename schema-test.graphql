@@ -1,0 +1,123 @@
+scalar DateTime
+
+type Contract {
+  id: Int!
+  name: String!
+  start: DateTime!
+  end: DateTime!
+  skills: [Skill!]!
+  groups: [Group!]!
+}
+
+type Skill {
+  contractId: Int!
+  id: Int!
+  name: String!
+  contract: Contract!
+  skillToStudents: [SkillToStudent!]!
+}
+
+type Group {
+  id: Int!
+  name: String!
+  contracts: [Contract!]!
+  students: [Student!]!
+}
+
+type SkillToStudent {
+  markValue: String!
+  skillId: Int!
+  studentId: Int!
+  mark: Mark!
+  skill: Skill!
+  student: Student!
+}
+
+type Student {
+  firstName: String!
+  id: Int!
+  lastName: String!
+  username: Int!
+  skillsToStudent(markFilter: [String!]! = []): [SkillToStudent!]!
+  groups: [Group!]!
+}
+
+type Mark {
+  rgb: String!
+  text: String!
+  value: String!
+  skillsToStudents: [SkillToStudent!]!
+  icon: String!
+}
+
+type Teacher {
+  email: String!
+  password: String!
+}
+
+interface AuthPayload {
+  token: String!
+}
+
+type AuthPayloadTeacher implements AuthPayload {
+  token: String!
+  teacher: Teacher!
+}
+
+type AuthPayloadStudent implements AuthPayload {
+  token: String!
+  student: Student!
+}
+
+input LoginTeacherInput {
+  email: String!
+  password: String!
+}
+
+input LoginStudentInput {
+  username: Int!
+}
+
+input CreateOneTeacherInput {
+  email: String!
+  password: String!
+}
+
+input CreateOneStudentInput {
+  firstName: String!
+  lastName: String!
+  groupIds: [Int!]! = []
+}
+
+input CreateOneContractInput {
+  name: String!
+  start: DateTime!
+  end: DateTime!
+  skillNames: [String!]!
+}
+
+input CreateOneSkillInput {
+  name: String!
+  contractId: Int!
+}
+
+type Mutation {
+  loginTeacher(teacher: LoginTeacherInput!): AuthPayloadTeacher!
+  loginStudent(student: LoginStudentInput!): AuthPayloadStudent!
+  createOneTeacher(teacher: CreateOneTeacherInput!): Teacher!
+  createOneStudent(student: CreateOneStudentInput!): Student!
+  deleteOneStudent(id: Int!): Student!
+  createOneContract(contract: CreateOneContractInput!): Contract!
+  deleteOneContract(id: Int!): Contract!
+  updateStudentGroups(groupIds: [Int!]! = []): Student!
+  createOneSkill(skill: CreateOneSkillInput!): Skill!
+}
+
+type Query {
+  students: [Student!]!
+  student(id: Int!): Student
+  contracts(groupIds: [Int!]! = []): [Contract!]!
+  contract(id: Int!): Contract
+  marks: [Mark!]!
+  groups: [Group!]!
+}

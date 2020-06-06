@@ -1,8 +1,8 @@
-import { Args, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
+import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
 
 import { Contract } from "../../../models";
 import { Context } from "../../../index";
-import { CreateContractArgs } from "./args";
+import { ContractCreateInput } from "../../inputs";
 
 @Resolver((_of) => Contract)
 export class CreateContractResolver {
@@ -12,10 +12,32 @@ export class CreateContractResolver {
     description: undefined,
   })
   async createContract(
-    @Ctx() ctx: Context,
-    @Args() args: CreateContractArgs
+    @Ctx() { prisma }: Context,
+    @Arg("data") data: ContractCreateInput
   ): Promise<Contract> {
-    // @ts-ignore
-    return ctx.prisma.contract.create(args);
+
+    const students = await prisma.student.findMany();
+
+    return prisma.contract.create({
+      data: {
+        name: data.name,
+        start: data.start,
+        end: data.end,
+        //@ts-ignore
+        groups: data.groups,
+        skills: {
+          create: data.skills.create?.map(skillCreate => ({
+            name: skillCreate.name, skillToStudents: {
+              create: students.map(student => ({
+                student: { connect: { id: student.id } },
+                mark: { connect: { value: "TODO" } }
+              }))
+            }
+          }))
+        }
+      }
+    });
+
+
   }
 }

@@ -1,4 +1,5 @@
-import { dropDatabase } from "../../../utils/dropDatabase";
+import { dropDatabase } from "../../../../src/utils/dropDatabase";
+
 
 const deleteTeacherMutation = `
   mutation DeleteTeacher($data: TeacherWhereUniqueInput!) {

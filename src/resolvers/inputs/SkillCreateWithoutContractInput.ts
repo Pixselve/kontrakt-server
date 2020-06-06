@@ -1,5 +1,6 @@
 import * as TypeGraphQL from "type-graphql";
 import { SkillToStudentCreateManyWithoutSkillInput } from "../inputs/SkillToStudentCreateManyWithoutSkillInput";
+import { IsNotEmpty } from "class-validator";
 
 @TypeGraphQL.InputType({
   isAbstract: true,
@@ -10,6 +11,7 @@ export class SkillCreateWithoutContractInput {
     nullable: false,
     description: undefined,
   })
+  @IsNotEmpty()
   name!: string;
 
   @TypeGraphQL.Field((_type) => SkillToStudentCreateManyWithoutSkillInput, {
