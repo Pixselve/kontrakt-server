@@ -1,4 +1,4 @@
-import { Arg, Authorized, Ctx, Mutation, Resolver } from "type-graphql";
+import { Arg, Authorized, Ctx, Int, Mutation, Resolver } from "type-graphql";
 import { Student } from "../../models/Student";
 import { Context } from "../../index";
 import { UpdateOneStudentInput } from "./input/UpdateOneStudent.input";
@@ -9,7 +9,7 @@ export default class UpdateOneStudentResolver {
   @Authorized("TEACHER")
   async updateOneStudent(
     @Ctx() { prisma }: Context,
-    @Arg("id") id: number,
+    @Arg("id", returns => Int) id: number,
     @Arg("student") { firstName, lastName, groupIds }: UpdateOneStudentInput
   ) {
     return prisma.student.update({
