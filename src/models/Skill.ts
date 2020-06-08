@@ -1,7 +1,8 @@
-import { Field, Int, ObjectType } from "type-graphql";
-import { FixDecorator, Scalars } from "../utils/types";
+import { Ctx, Field, Int, ObjectType } from "type-graphql";
+import { Scalars } from "../utils/types";
 import { Contract } from "./Contract";
 import { SkillToStudent } from "./SkillToStudent";
+import { Context } from "../index";
 
 @ObjectType()
 export class Skill {
@@ -16,9 +17,24 @@ export class Skill {
   @Field((type) => String)
   name!: Scalars["String"];
 
+  @Field(returns => Contract)
+  async contract(
+    @Ctx() { prisma }: Context
+  ) {
+    return prisma.skill.findOne({ where: { id: this.id } }).contract();
+  }
 
-  contract?: FixDecorator<Contract>;
 
-
-  skillToStudents?: Array<SkillToStudent>;
+  @Field(returns => [SkillToStudent])
+  async skillToStudents(
+    @Ctx() { prisma }: Context
+  ) {
+    return prisma.skillToStudent.findMany({
+      where: {
+        skill: {
+          id: this.id
+        }
+      }
+    });
+  }
 }

@@ -25,7 +25,7 @@ export class Student {
     @Ctx() { prisma }: Context,
     @Arg("markFilter", (returns) => [String], { defaultValue: [] })
       markFilter: string[]
-  ): Promise<SkillToStudent[]> {
+  ) {
     let skillsToStudent = await prisma.skillToStudent.findMany({
       where: {
         student: { id: this.id },
