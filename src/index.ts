@@ -5,6 +5,7 @@ import { ApolloServer } from "apollo-server-express";
 import * as express from "express";
 import * as jwt from "express-jwt";
 import buildSchema from "./utils/buildSchema";
+import { graphqlUploadExpress } from "graphql-upload";
 
 interface UserTypeTeacher {
   type: "TEACHER";
@@ -31,6 +32,7 @@ async function main() {
     schema,
     playground: process.env.NODE_ENV === "dev",
     introspection: process.env.NODE_ENV === "dev",
+    uploads: false,
     // @ts-ignore
     context: ({ req }): Context => ({ prisma, user: req.user }),
   });
@@ -42,6 +44,8 @@ async function main() {
       credentialsRequired: false,
     })
   );
+
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
   server.applyMiddleware({ app, path: "/" });
 
