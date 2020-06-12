@@ -11,7 +11,7 @@ export default class CreateOneStudentResolver {
     @Ctx() { prisma }: Context,
     @Arg("student") { firstName, lastName, groupIds }: CreateOneStudentInput
   ) {
-    //  Generate a 6 digit username
+    //  Generate a 6 digits username
     let username = generateSixDigitNumber();
     let i = 0;
     while (

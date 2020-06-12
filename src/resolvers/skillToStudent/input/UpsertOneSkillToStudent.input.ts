@@ -14,6 +14,5 @@ export class UpsertOneSkillToStudentInput {
 
   @Field((type) => String)
   @IsNotEmpty()
-  @IsAlphanumeric()
   markValue!: Scalars["String"];
 }
