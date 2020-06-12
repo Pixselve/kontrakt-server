@@ -1,5 +1,6 @@
 import { dropDatabase } from "../../../../srcBACK/utils/dropDatabase";
-import { gCall } from "../../../../srcBACK/test-utils/gCall";
+import { gCall } from "../../../../src/utils/gCall";
+
 
 const createTeacherMutation = `
     mutation CreateTeacher($createTeacherData: TeacherCreateInput!) {
