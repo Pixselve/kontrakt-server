@@ -4,6 +4,10 @@ import buildSchema from "../utils/buildSchema";
 import { PrismaClient } from "@prisma/client";
 import { Context } from "../index";
 
+import { config } from "dotenv";
+
+config();
+
 interface Options {
   source: string;
   variableValues?: Maybe<{ [p: string]: any }>;
@@ -22,7 +26,12 @@ export const gCall = async ({ source, variableValues, user }: Options) => {
     schema = await buildSchema();
   }
   if (!prisma) {
-    prisma = new PrismaClient();
+    prisma = new PrismaClient({
+      datasources: {
+        db:
+          process.env.DATABASE_URL_TEST,
+      },
+    });
   }
 
   return graphql({
