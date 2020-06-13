@@ -8,7 +8,6 @@ env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: europe-west1
   SERVICE_NAME: kontrakt-api
-  DATABASE_URL: ${{ secrets.RUN_SA_KEY }}
 
 jobs:
   setup-build-deploy:
@@ -37,6 +36,6 @@ jobs:
           gcloud run deploy "$SERVICE_NAME" \
             --quiet \
             --region "$RUN_REGION" \
-            --image "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME" \
+            --image "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:latest" \
             --platform "managed" \
             --allow-unauthenticated
