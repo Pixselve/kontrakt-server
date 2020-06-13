@@ -2,28 +2,35 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator typegraphql {
-  provider = "node_modules/typegraphql-prisma/generator.js"
-}
-
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model Color {
-  id          Int           @default(autoincrement()) @id
-  name        String
-  rgb         String
-  skillStatuses SkillStatus[]
+  url      = env("DATABASE_URL_DEV")
 }
 
 model Contract {
-  date  DateTime
-  end   DateTime
-  id    Int      @default(autoincrement()) @id
-  name  String
-  skills Skill[]
+  archived Boolean  @default(false)
+  end      DateTime
+  id       Int      @default(autoincrement()) @id
+  name     String
+  rgb      String   @unique
+  start    DateTime
+  skills    Skill[]
+  groups    Group[]  @relation("GroupToContract", references: [id])
+}
+
+model Group {
+  id       Int        @default(autoincrement()) @id
+  name     String     @unique
+  contracts Contract[] @relation("GroupToContract", references: [id])
+  students  Student[]  @relation("StudentToGroup", references: [id])
+}
+
+model Mark {
+  icon           String           @unique
+  rgb            String
+  text           String
+  value          String           @id
+  skillsToStudents SkillToStudent[]
 }
 
 model Skill {
@@ -34,21 +41,15 @@ model Skill {
   skillToStudents SkillToStudent[]
 }
 
-model SkillStatus {
-  colorId Int
-  id      Int    @default(autoincrement()) @id
-  mark    Mark
-  text    String
-  color   Color  @relation(fields: [colorId], references: [id])
-}
-
 model SkillToStudent {
-  id        Int     @default(autoincrement()) @id
-  mark      Mark    @default(dbgenerated())
+  markValue String
   skillId   Int
   studentId Int
+  mark      Mark    @relation(fields: [markValue], references: [value])
   skill     Skill   @relation(fields: [skillId], references: [id])
   student   Student @relation(fields: [studentId], references: [id])
+
+  @@id([studentId, skillId])
 }
 
 model Student {
@@ -57,20 +58,10 @@ model Student {
   lastName       String
   username       Int              @unique
   skillsToStudent SkillToStudent[]
+  groups          Group[]          @relation("StudentToGroup", references: [id])
 }
 
 model Teacher {
   email    String @id
   password String
-}
-
-enum Mark {
-  AWAITING_CORRECTION
-  BLUE
-  GREEN
-  MARKED
-  ORANGE
-  RED
-  TODO
-  TO_FINISH
 }

@@ -1,57 +1,38 @@
 import "reflect-metadata";
 import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server-express";
-import { buildSchema } from "type-graphql";
 
+import * as express from "express";
+import * as jwt from "express-jwt";
+import buildSchema from "./utils/buildSchema";
+import { graphqlUploadExpress } from "graphql-upload";
 
-import express from "express";
-import jwt from "express-jwt";
+interface UserTypeTeacher {
+  type: "TEACHER";
+  teacher: { email: string };
+}
 
-
-import { CreateOneTeacher } from "./resolvers/crud/Teacher/CreateOneTeacher";
-import { LoginTeacher } from "./resolvers/crud/Teacher/LoginTeacher";
-import { CheckIsStudentExists } from "./resolvers/crud/Student/CheckIsStudentExists";
-import { CreateOneContract } from "./resolvers/crud/Contract/CreateOneContract";
-import { RemoveOneContract } from "./resolvers/crud/Contract/RemoveOneContract";
-import { DeleteStudent } from "./resolvers/crud/Student/DeleteStudent";
-import { EditOrCreateSkillToStudent } from "./resolvers/crud/SkillToStudent/EditOrCreateSkillToStudent";
-import { customAuthChecker } from "./utils/authChecker";
-import { ContractsToExcel } from "./resolvers/crud/Contract/ContractsToExcel";
-
-import { ContractCrudResolver } from "./resolvers/crud/Contract/ContractCrudResolver";
-import { SkillCrudResolver } from "./resolvers/crud/Skill/SkillCrudResolver";
-
-import { StudentCrudResolver } from "./resolvers/crud/Student/StudentCrudResolver";
-import { ContractRelationsResolver, SkillRelationsResolver, StudentRelationsResolver } from "./resolvers/relations";
-import { SkillStatusCrudResolver } from "./resolvers/crud/SkillStatus/SkillStatusCrudResolver";
-import { ColorCrudResolver } from "./resolvers/crud/Color/ColorCrudResolver";
-import { ColorRelationsResolver } from "./resolvers/relations/Color/ColorRelationsResolver";
-import { SkillStatusRelationsResolver } from "./resolvers/relations/SkillStatus/SkillStatusRelationsResolver";
-import { StudentLoginResolver } from "./resolvers/crud/Student/StudentLogin";
+interface UserTypeStudent {
+  type: "STUDENT";
+  student: { id: number };
+}
 
 export interface Context {
   prisma: PrismaClient;
-  user: {
-    type: "TEACHER" | "STUDENT",
-    teacher?: { email: string },
-    student?: { id: number }
-  };
+  user: UserTypeTeacher | UserTypeStudent;
 }
 
 const prisma = new PrismaClient();
 const app = express();
 
 async function main() {
-  const schema = await buildSchema({
-    resolvers: [StudentLoginResolver, SkillStatusRelationsResolver, ColorRelationsResolver, ColorCrudResolver, SkillStatusCrudResolver, StudentRelationsResolver, ContractRelationsResolver, SkillRelationsResolver, StudentCrudResolver, ContractCrudResolver, SkillCrudResolver, CreateOneTeacher, LoginTeacher, CheckIsStudentExists, CreateOneContract, RemoveOneContract, DeleteStudent, EditOrCreateSkillToStudent, ContractsToExcel],
-    validate: false,
-    authChecker: customAuthChecker
-  });
+  const schema = await buildSchema();
 
   const server = new ApolloServer({
     schema,
     playground: process.env.NODE_ENV === "dev",
     introspection: process.env.NODE_ENV === "dev",
+    uploads: false,
     // @ts-ignore
     context: ({ req }): Context => ({ prisma, user: req.user }),
   });
@@ -61,15 +42,23 @@ async function main() {
     jwt({
       secret: "Rne7p$Y*pK^GGJ4j@S7bWZ5y%",
       credentialsRequired: false,
-    }),
+    })
   );
+
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
 
   server.applyMiddleware({ app, path: "/" });
 
   await app.listen({ port: process.env.PORT || 4000 });
-  console.log(`🚀 Server ready at http://localhost:${ process.env.PORT || 4000 }${ server.graphqlPath }`);
+  console.log(
+    `🚀 Server ready at http://localhost:${process.env.PORT || 4000}${
+      server.graphqlPath
+    }`
+  );
 }
 
-main().catch(console.error).finally(async () => {
-  await prisma.disconnect();
-});
+main()
+  .catch(console.error)
+  .finally(async () => {
+    await prisma.disconnect();
+  });

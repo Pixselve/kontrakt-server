@@ -3,4 +3,7 @@ node_modules
 prisma/.env
 prisma/migrations
 prisma/.prisma
+prisma/studio
 dist
+src/generated
+srcBACK
