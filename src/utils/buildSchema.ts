@@ -27,6 +27,7 @@ import FindOneStudentResolver from "../resolvers/student/FindOneStudent.resolver
 import MeResolver from "../resolvers/user/Me.resolver";
 import FindManyContractNotFinishedByStudent from "../resolvers/contract/FindManyContractNotFinishedByStudent";
 import CreateManyStudentCSVResolver from "../resolvers/student/CreateManyStudentCSV.resolver";
+import StatusResolver from "../resolvers/status";
 
 export default async (): Promise<GraphQLSchema> =>
   buildSchema({
@@ -55,7 +56,8 @@ export default async (): Promise<GraphQLSchema> =>
       FindOneStudentResolver,
       MeResolver,
       FindManyContractNotFinishedByStudent,
-      CreateManyStudentCSVResolver
+      CreateManyStudentCSVResolver,
+      StatusResolver
     ],
     validate: true,
     authChecker: customAuthChecker,
